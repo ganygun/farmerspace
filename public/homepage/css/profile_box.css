@@ -1,0 +1,134 @@
+@media screen and (min-width: 320px) {
+    .profile-img {
+        margin-right: auto;
+    }
+    .profile-img img {
+        width: 60%;
+    }
+    .profile-box {
+        display: block;
+        margin-right: auto;
+        margin-top: 30px;
+    }
+    .profile-detail .head-editor {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .profile-img {
+        margin-right: auto;
+    }
+    .profile-img img {
+        width: 40%;
+    }
+    .profile-box {
+        display: block;
+        margin-right: auto;
+        margin-top: 30px;
+    }
+    .profile-detail .head-editor {
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Small devices (landscape phones, 640px and up) ----------- */
+
+@media (min-width: 640px) {
+    .profile-img {
+        margin-right: 10px!important;
+        margin: auto;
+    }
+    .profile-img img {
+        width: 100%;
+    }
+    .profile-box {
+        display: block;
+        margin-right: auto;
+        margin-top: 10px;
+    }
+    .profile-detail .head-editor {
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Medium devices (tablets, 768px and up) ----------- */
+
+@media screen and (min-width: 768px) {
+    .profile-img {
+        margin-right: 30px!important;
+    }
+    .profile-img img {
+        width: 80%;
+    }
+    .profile-box {
+        display: block;
+        margin-right: auto;
+        margin-top: 25px;
+    }
+    .profile-detail .head-editor {
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Large devices (desktops, 992px and up) ----------- */
+
+@media (min-width: 992px) {
+    .profile-img {
+        margin-right: 30px!important;
+    }
+    .profile-img img {
+        width: 80%;
+    }
+    .profile-box {
+        display: block;
+        margin-right: auto;
+        margin-top: 30px;
+    }
+    .profile-detail .head-editor {
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Large devices (desktops, 1024px and up) ----------- */
+
+@media (min-width: 1024px) {
+    .profile-img {
+        margin-right: 30px!important;
+    }
+    .profile-img img {
+        width: 100%;
+    }
+    .profile-box {
+        display: block;
+        margin-right: auto;
+        margin-top: 10px;
+    }
+    .profile-detail .head-editor {
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Extra large devices (large desktops, 1200px and up) ----------- */
+
+@media (min-width: 1200px) {
+    .profile-img {
+        margin-right: 30px!important;
+    }
+    .profile-img img {
+        width: 100%;
+    }
+    .profile-box {
+        display: block;
+        margin-right: auto;
+        margin-top: 20px;
+    }
+    .profile-detail .head-editor {
+        margin-bottom: 10px;
+    }
+}
