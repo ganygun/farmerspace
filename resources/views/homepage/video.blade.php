@@ -3,6 +3,9 @@
     $('title').html('มุมวีดีโอ');
 </script>
 <style>
+    h3{
+        font-size: 20px;
+    }
 	.btn-video{
 		padding: 12px 25px;
 		border-radius: 0px;
@@ -15,17 +18,14 @@
     a:hover,a:focus{
         text-decoration: none;
     }
-	.post .post-content.small p {
-	    overflow: hidden;
-	    text-overflow: ellipsis;
-	    display: -webkit-box;
-	    line-height: 24px;
-	    /* fallback */
-	    max-height: 92px;
-	    /* fallback */
-	    -webkit-line-clamp: 2;
-	    /* number of lines to show */
-	    -webkit-box-orient: vertical;
+	.post .post-content.small {
+	   overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 24px;     /* fallback */
+        max-height: 50px;      /* fallback */
+        -webkit-line-clamp: 2; /* number of lines to show */
+        -webkit-box-orient: vertical;
 	}
 
 	@media screen and (min-width: 15em) {
@@ -85,9 +85,9 @@
                         @if(!empty($jsonDecodeVdoAll['dataListVDO']))
                                 <div class="small-12 medium-6 large-6 columns" style="padding-top: 20px;">
                                     <h3 style="color:#fff;"">{{ $jsonDecodeVdoAll['dataListVDO'][0]['Headline'] }}<h3>
-                                    <a class=" btn-lg btn-video pull-right" href="{{ URL::to('video/' . $jsonDecodeVdoAll['dataListVDO'][0]['VdoID']) }}">ดูวีดีโอ ></a>
+                                    <a class=" btn-sm btn-video pull-right" href="{{ URL::to('video/' . $jsonDecodeVdoAll['dataListVDO'][0]['VdoID']) }}">ดูวีดีโอ ></a>
                                 </div>
-                                <div class="small-12 medium-6 large-6 columns">
+                                <div class="small-12 medium-6 large-6 columns" style="padding-top: 20px;">
                                 <!-- 16:9 aspect ratio -->
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src="{{ $jsonDecodeVdoAll['dataListVDO'][0]['VdoUrl'] }}"></iframe>
@@ -103,18 +103,14 @@
     <div class="row archive-page-container">
         <div class="small-12 medium-10 medium-offset-1 large-8 large-offset-2 columns" style="padding: 0;">
             <div id="posts">
-                <article class="post style1 " id="post-18446" itemscope="" itemtype="http://schema.org/Article" role="article">
-                          @if(!empty($jsonDecodeVdoAll['dataListVDO']))
-                    @foreach($jsonDecodeVdoAll['dataListVDO'] as $key => $dataListVDO)
                             <div class="row" style="margin:20px 0;">
+                    @if(!empty($jsonDecodeVdoAll['dataListVDO']))
+                    @foreach($jsonDecodeVdoAll['dataListVDO'] as $key => $dataListVDO)
                                 <div class="small-12 medium-4 large-4 columns">
-                                    @if($key<4 && $key != 0)
+                        <article class="post style1" itemtype="http://schema.org/Article" role="article">
                                         <figure class="post-gallery ">
-                                            <a href="{{ URL::to('video/' . $jsonDecodeVdoAll['dataListVDO'][$key]['VdoID']) }}" title="">
-                                                <!-- 16:9 aspect ratio -->
-                                                <div class="embed-responsive embed-responsive-16by9">
-                                                     <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ $jsonDecodeVdoAll['dataListVDO'][$key]['VdoUrl'] }}"></iframe>
-                                                </div>
+                                            <a href="{{ URL::to('/video/' .$jsonDecodeVdoAll['dataListVDO'][$key] ['VdoID']) }}">
+                                                <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][$key]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][$key]['VdoUrl'], 'embed/') + 6) }}/hqdefault.jpg" alt="" itemprop="image" style="width: 100%;height: auto;object-fit: cover;">
                                             </a>
                                         </figure>
                                         <header class="post-title entry-header">
@@ -129,40 +125,11 @@
                                             {!! $jsonDecodeVdoAll['dataListVDO'][$key]['Highlight'] !!}
                                             </p>
                                         </div>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="row" style="margin:20px 0;">
-                                @if($key<7 && $key != 0)
-                                <div class="small-12 medium-4 large-4 columns">
-                                        <figure class="post-gallery ">
-                                            <a href="{{ URL::to('video/' . $jsonDecodeVdoAll['dataListVDO'][$key]['VdoID']) }}" title="">
-                                               <!-- 16:9 aspect ratio -->
-                                                <div class="embed-responsive embed-responsive-16by9">
-                                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ $jsonDecodeVdoAll['dataListVDO'][$key]['VdoUrl'] }}"></iframe>
-                                                </div>
-                                            </a>
-                                        </figure>
-                                        <header class="post-title entry-header">
-                                            <h3 itemprop="headline">
-                                                <a href="{{ URL::to('video/' . $jsonDecodeVdoAll['dataListVDO'][$key]['VdoID']) }}" title="">
-                                                 {{ $jsonDecodeVdoAll['dataListVDO'][$key]['Headline'] }}
-                                                </a>
-                                            </h3>
-                                        </header>
-                                        <div class="post-content small">
-                                            <p>
-                                            {{ $jsonDecodeVdoAll['dataListVDO'][$key]['Highlight'] }}
-                                            </p>
-                                            
-                                        </div>
-                                </div>
-                                @endif
-                            </div>
-                              @endforeach
-                @endif
                         </article>
-                  
+                                </div>
+                    @endforeach
+                    @endif
+                            </div>
             </div>
         </div>
         <!-- Load page -->
