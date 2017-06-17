@@ -4,14 +4,15 @@
 </script>
 <style>
     h3{
-        font-size: 20px;
+        font-size: 18px!important;
+        margin-bottom: 0px!important;
     }
 	.btn-video{
 		padding: 12px 25px;
 		border-radius: 0px;
 		color:#fff;
 		background-color: #31383e;
-		font-size: 1em;
+		font-size: 18px;
 		font-weight: 300;
         text-decoration: none;
 	}
@@ -84,7 +85,7 @@
                         <div class="row">
                         @if(!empty($jsonDecodeVdoAll['dataListVDO']))
                                 <div class="small-12 medium-6 large-6 columns" style="padding-top: 20px;">
-                                    <h3 style="color:#fff;"">{{ $jsonDecodeVdoAll['dataListVDO'][0]['Headline'] }}<h3>
+                                    <h2 style="color:#fff;"">{{ $jsonDecodeVdoAll['dataListVDO'][0]['Headline'] }}<h2>
                                     <a class=" btn-sm btn-video pull-right" href="{{ URL::to('video/' . $jsonDecodeVdoAll['dataListVDO'][0]['VdoID']) }}">ดูวีดีโอ ></a>
                                 </div>
                                 <div class="small-12 medium-6 large-6 columns" style="padding-top: 20px;">
@@ -102,34 +103,36 @@
      <aside class="gap cf" style="height:40px;"></aside>
     <div class="row archive-page-container">
         <div class="small-12 medium-10 medium-offset-1 large-8 large-offset-2 columns" style="padding: 0;">
+                <div class="row" style="margin:20px 0;">
             <div id="posts">
-                            <div class="row" style="margin:20px 0;">
                     @if(!empty($jsonDecodeVdoAll['dataListVDO']))
                     @foreach($jsonDecodeVdoAll['dataListVDO'] as $key => $dataListVDO)
-                                <div class="small-12 medium-4 large-4 columns">
+                    @if($key<=6 && $key!=0)
+                    <div class="small-12 medium-4 large-4 columns" style="margin:30px 0;">
                         <article class="post style1" itemtype="http://schema.org/Article" role="article">
-                                        <figure class="post-gallery ">
-                                            <a href="{{ URL::to('/video/' .$jsonDecodeVdoAll['dataListVDO'][$key] ['VdoID']) }}">
-                                                <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][$key]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][$key]['VdoUrl'], 'embed/') + 6) }}/hqdefault.jpg" alt="" itemprop="image" style="width: 100%;height: auto;object-fit: cover;">
-                                            </a>
-                                        </figure>
-                                        <header class="post-title entry-header">
-                                            <h3 itemprop="headline">
-                                                <a href="{{ URL::to('video/' . $jsonDecodeVdoAll['dataListVDO'][$key]['VdoID']) }}" title="">
-                                                 {{ $jsonDecodeVdoAll['dataListVDO'][$key]['Headline'] }}
-                                                </a>
-                                            </h3>
-                                        </header>
-                                        <div class="post-content small">
-                                            <p>
-                                            {!! $jsonDecodeVdoAll['dataListVDO'][$key]['Highlight'] !!}
-                                            </p>
-                                        </div>
+                            <figure class="post-gallery ">
+                                <a href="{{ URL::to('/video/' .$jsonDecodeVdoAll['dataListVDO'][$key] ['VdoID']) }}">
+                                    <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][$key]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][$key]['VdoUrl'], 'embed/') + 6) }}/mqdefault.jpg" alt="" itemprop="image" style="width: 100%;height: auto;object-fit: cover;">
+                                </a>
+                            </figure>
+                            <header class="post-title entry-header">
+                                <h3 itemprop="headline">
+                                    <a href="{{ URL::to('video/' . $jsonDecodeVdoAll['dataListVDO'][$key]['VdoID']) }}" title="">
+                                                     {{ $jsonDecodeVdoAll['dataListVDO'][$key]['Headline'] }}
+                                    </a>
+                                </h3>
+                            </header>
+                            <div class="post-content small">
+                                <p>
+                                {!! $jsonDecodeVdoAll['dataListVDO'][$key]['Highlight'] !!}
+                                </p>
+                            </div>
                         </article>
-                                </div>
+                    </div>
+                    @endif
                     @endforeach
                     @endif
-                            </div>
+                </div>
             </div>
         </div>
         <!-- Load page -->

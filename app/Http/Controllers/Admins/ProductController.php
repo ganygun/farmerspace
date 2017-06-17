@@ -142,46 +142,52 @@ class ProductController extends Controller {
 		if ($bodyProduct != "Duplicate Key") {
 			Session::put('productKey', (string) $bodyProduct);
 
-			// Add Overview Species
-			$url = 'http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Insert_SpeciesItem_ENG';
-			$postData = '&UserID=' . Session::get('key') . '&ProductID=' . (string) $bodyProduct . '&Species=Overview&CreateDate=' . date("Y-m-d H:i:s") . '&ItemDescription=&GrowingGuide=';
+			// Add Overview Species TH
+			if (substr(Session::get('productKey'), 2, 2) == 'TH') {
+				$url = 'http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Insert_SpeciesItem_THA';
+				$postData = '&UserID=' . Session::get('key') . '&ProductID=' . Session::get('productKey') . '&Species=Overview&CreateDate=' . date("Y-m-d H:i:s") . '&ItemDescription=&GrowingGuide=';
 
-			$data = $postData;
+				$data = $postData;
 
-			// use key 'http' even if you send the request to https://...
-			$options = array(
-				'http' => array(
-					'header' => "Content-type: application/x-www-form-urlencoded\r\n" . "Content-Length: " . strlen($data) . "\r\n",
-					'method' => 'POST',
-					'content' => $data,
-				),
-			);
-			$context = stream_context_create($options);
-			$result = file_get_contents($url, false, $context);
-			if ($result === FALSE) { /* Handle error */}
-			$bodyOverview = $result;
-			// -------------------------------------
+				// use key 'http' even if you send the request to https://...
+				$options = array(
+					'http' => array(
+						'header' => "Content-type: application/x-www-form-urlencoded\r\n" . "Content-Length: " . strlen($data) . "\r\n",
+						'method' => 'POST',
+						'content' => $data,
+					),
+				);
+				$context = stream_context_create($options);
+				$result = file_get_contents($url, false, $context);
+				if ($result === FALSE) { /* Handle error */}
+				$bodyOverview = $result;
+			}
+			// Add Overview Species ENG
+			elseif(substr(Session::get('productKey'), 2, 2) == 'EN'){
+				$url = 'http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Insert_SpeciesItem_ENG';
+				$postData = '&UserID=' . Session::get('key') . '&ProductID=' . Session::get('productKey') . '&Species=Overview&CreateDate=' . date("Y-m-d H:i:s") . '&ItemDescription=&GrowingGuide=';
+
+				$data = $postData;
+
+				// use key 'http' even if you send the request to https://...
+				$options = array(
+					'http' => array(
+						'header' => "Content-type: application/x-www-form-urlencoded\r\n" . "Content-Length: " . strlen($data) . "\r\n",
+						'method' => 'POST',
+						'content' => $data,
+					),
+				);
+				$context = stream_context_create($options);
+				$result = file_get_contents($url, false, $context);
+				if ($result === FALSE) { /* Handle error */}
+				$bodyOverview = $result;
+			}
+		
 
 			// Add spicies's Name
 			if (!empty($_POST["spiciesName"])) {
 				foreach ($_POST["spiciesName"] as $value) {
-					if (preg_match('/^[a-zA-Z0-9]+$/', $value)) {
-						$url = 'http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Insert_SpeciesItem_ENG';
-						$postData = '&UserID=' . Session::get('key') . '&ProductID=' . (string) $bodyProduct . '&Species=' . $value . '&CreateDate=' . date("Y-m-d H:i:s") . '&ItemDescription=&GrowingGuide=';
-						$data = $postData;
-						// use key 'http' even if you send the request to https://...
-						$options = array(
-							'http' => array(
-								'header' => "Content-type: application/x-www-form-urlencoded\r\n" . "Content-Length: " . strlen($data) . "\r\n",
-								'method' => 'POST',
-								'content' => $data,
-							),
-						);
-						$context = stream_context_create($options);
-						$result = file_get_contents($url, false, $context);
-						if ($result === FALSE) { /* Handle error */}
-						$bodySpecies = $result;
-					} else {
+					if (substr(Session::get('productKey'), 2, 2) == 'TH') {
 						$url = 'http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Insert_SpeciesItem_THA';
 						$postData = '&UserID=' . Session::get('key') . '&ProductID=' . (string) $bodyProduct . '&Species=' . $value . '&CreateDate=' . date("Y-m-d H:i:s") . '&ItemDescription=&GrowingGuide=';
 						$data = $postData;
@@ -197,7 +203,23 @@ class ProductController extends Controller {
 						$result = file_get_contents($url, false, $context);
 						if ($result === FALSE) { /* Handle error */}
 						$bodySpecies = $result;
-
+					} 
+					elseif(substr(Session::get('productKey'), 2, 2) == 'EN') {
+						$url = 'http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Insert_SpeciesItem_ENG';
+						$postData = '&UserID=' . Session::get('key') . '&ProductID=' . (string) $bodyProduct . '&Species=' . $value . '&CreateDate=' . date("Y-m-d H:i:s") . '&ItemDescription=&GrowingGuide=';
+						$data = $postData;
+						// use key 'http' even if you send the request to https://...
+						$options = array(
+							'http' => array(
+								'header' => "Content-type: application/x-www-form-urlencoded\r\n" . "Content-Length: " . strlen($data) . "\r\n",
+								'method' => 'POST',
+								'content' => $data,
+							),
+						);
+						$context = stream_context_create($options);
+						$result = file_get_contents($url, false, $context);
+						if ($result === FALSE) { /* Handle error */}
+						$bodySpecies = $result;
 					}
 				}
 			}
@@ -208,7 +230,7 @@ class ProductController extends Controller {
 				['query' =>
 					['Method' => 'Insert_Product_Pic',
 						'UserID' => Session::get('key'),
-						'ProductID' => (string) $bodyProduct,
+						'ProductID' => Session::get('productKey'),
 						'Image' => $PathFile,
 						'CreateDate' => date("Y-m-d H:i:s"),
 					],
@@ -216,11 +238,10 @@ class ProductController extends Controller {
 			$bodyImage = $response->getBody();
 			if ((string) $bodyImage == "Completed") {
 				flash('new product was successfully added', 'success');
-				return redirect('/admins/product/overview/' . $bodyProduct . '/edit')->with('error', '1');
+				return redirect('/admins/product/overview/' . Session::get('productKey') . '/edit')->with('error', '1');
 			} else {
 				flash('Images Uncompleted, but you can edit after this', 'warning');
-
-				return redirect('/admins/product/overview/' . $bodyProduct . '/edit')->with('error', '0');
+				return redirect('/admins/product/overview/' . Session::get('productKey') . '/edit')->with('error', '0');
 			}
 			// ----------------------------------------
 		} else {
@@ -308,7 +329,7 @@ class ProductController extends Controller {
 		$client = new Client([
 			// Base URI is used with relative requests
 			// You can set any number of default request options.
-			'timeout' => 2.0,
+			'timeout' => 10.0,
 		]);
 
 		// -------------- Update Product Thai
@@ -346,8 +367,8 @@ class ProductController extends Controller {
 		if (!empty($request->input('spiciesName'))) {
 			foreach ($request->input('spiciesName') as $value) {
 
-				if (preg_match('/^[a-zA-Z0-9]+$/', $value)) {
-					$url = 'http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Insert_SpeciesItem_ENG';
+				if (substr(Session::get('productKey'), 2, 2) == 'TH') {
+					$url = 'http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Insert_SpeciesItem_THA';
 					$postData = '&UserID=' . Session::get('key') . '&ProductID=' . $id . '&Species=' . $value . '&CreateDate=' . date("Y-m-d H:i:s") . '&ItemDescription=&GrowingGuide=';
 					$data = $postData;
 					// use key 'http' even if you send the request to https://...
@@ -362,9 +383,9 @@ class ProductController extends Controller {
 					$result = file_get_contents($url, false, $context);
 					if ($result === FALSE) { /* Handle error */}
 					$bodySpecies = $result;
-
-				} else {
-					$url = 'http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Insert_SpeciesItem_THA';
+				} 
+				elseif(substr(Session::get('productKey'), 2, 2) == 'EN') {
+					$url = 'http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Insert_SpeciesItem_ENG';
 					$postData = '&UserID=' . Session::get('key') . '&ProductID=' . $id . '&Species=' . $value . '&CreateDate=' . date("Y-m-d H:i:s") . '&ItemDescription=&GrowingGuide=';
 					$data = $postData;
 					// use key 'http' even if you send the request to https://...

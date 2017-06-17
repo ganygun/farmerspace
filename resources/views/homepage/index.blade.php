@@ -376,7 +376,7 @@
                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style3-small" id="post-17793" role="article">
                                                         <figure class="post-gallery ">
                                                             <a href="{{ URL::to('/video/' .$jsonDecodeVdoAll['dataListVDO'][1]['VdoID']) }}">
-                                                                <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][1]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][1]['VdoUrl'], 'embed/') + 6) }}/hqdefault.jpg" alt="" itemprop="image" style="width: 100%;height: 160px;object-fit: cover;">
+                                                                <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][1]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][1]['VdoUrl'], 'embed/') + 6) }}/mqdefault.jpg" alt="" itemprop="image">
                                                             </a>
                                                         </figure>
                                                         <header class="post-title entry-header">
@@ -390,7 +390,7 @@
                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style3-small" id="post-17793" role="article">
                                                         <figure class="post-gallery ">
                                                             <a href="{{ URL::to('/video/' .$jsonDecodeVdoAll['dataListVDO'][2] ['VdoID']) }}">
-                                                                <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][2]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][2]['VdoUrl'], 'embed/') + 6) }}/hqdefault.jpg" alt="" itemprop="image" style="width: 100%;height: 160px;object-fit: cover;">
+                                                                <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][2]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][2]['VdoUrl'], 'embed/') + 6) }}/mqdefault.jpg" alt="" itemprop="image">
                                                             </a>
                                                         </figure>
 
@@ -409,7 +409,7 @@
                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style3-small" id="post-17793" role="article">
                                                         <figure class="post-gallery ">
                                                             <a href="{{ URL::to('/video/' .$jsonDecodeVdoAll['dataListVDO'][3] ['VdoID']) }}">
-                                                                <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][3]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][3]['VdoUrl'], 'embed/') + 6) }}/hqdefault.jpg" alt="" itemprop="image" style="width: 100%;height: 160px;object-fit: cover;">
+                                                                <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][3]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][3]['VdoUrl'], 'embed/') + 6) }}/mqdefault.jpg" alt="" itemprop="image">
                                                             </a>
                                                         </figure>
                                                         <header class="post-title entry-header">
@@ -423,7 +423,7 @@
                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style3-small" id="post-17793" role="article">
                                                         <figure class="post-gallery ">
                                                             <a href="{{ URL::to('/video/' .$jsonDecodeVdoAll['dataListVDO'][4] ['VdoID']) }}">
-                                                                <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][4]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][4]['VdoUrl'], 'embed/') + 6) }}/hqdefault.jpg" alt="" itemprop="image" style="width: 100%;height: 160px;object-fit: cover;">
+                                                                <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][4]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][4]['VdoUrl'], 'embed/') + 6) }}/mqdefault.jpg" alt="" itemprop="image">
                                                             </a>
                                                         </figure>
 

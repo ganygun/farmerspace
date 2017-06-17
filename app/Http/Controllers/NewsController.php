@@ -15,7 +15,6 @@ class NewsController extends Controller {
 	 */
 	public function getPost($id) {
 
-
 		$client = new Client([
             // Base URI is used with relative requests
             // You can set any number of default request options.

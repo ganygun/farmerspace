@@ -12,7 +12,12 @@
  */
 Route::resource('/', 'HomeController');
 
+/**
+ * Loading Content
+ */
 Route::get('/news/page/{id}', array('uses' => 'NewsController@getPost'));
+Route::get('/video/page/{id}', array('uses' => 'VideoController@getPost'));
+Route::get('/event/page/{id}', array('uses' => 'EventController@getPost'));
 
 Route::resource('/news', 'NewsController');
 Route::resource('/video', 'VideoController');

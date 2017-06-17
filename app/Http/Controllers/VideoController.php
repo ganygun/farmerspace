@@ -9,6 +9,65 @@ use Illuminate\Http\Request;
 class VideoController extends Controller
 {
     /**
+     * Get Post by page id.
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getPost($id) {
+
+        $client = new Client([
+            // Base URI is used with relative requests
+            // You can set any number of default request options.
+            'timeout' => 10.0,
+        ]);
+        try {
+            //article.
+            $response = $client->request("GET", "http://farmerspace.azurewebsites.net/handlerforweb.ashx",
+                ['query' =>
+                    ['Method' => 'ShowAllVDOSearch',
+                        'VdoID' => '',
+                        'Number' => '0',
+                        'Language' => 'THA',
+                    ],
+                ]);
+
+            $bodyVideoAll = $response->getBody();
+            $jsonDecodeVdoAll = json_decode($bodyVideoAll, true);
+            if (Session::get('cerentPage') > count($jsonDecodeVdoAll['dataListVDO'])) {
+                exit();
+            }
+            else if(!empty($jsonDecodeVdoAll['dataListVDO'])) {
+                // first, this page have 7 ea. and than we call more 1 ea.
+                $id =Session::get('cerentPage');
+                // count page to call in this times
+                $countPage = $id + 1;
+                // increase 1 ea. to call 7-8 = 1 ea.
+                $id += 1;
+                // for call by countPage & array position -1 Ex. index[6-10] array[5-9]
+                for ($i = $id; $i <= $countPage ; $i++) {
+                    if (empty($jsonDecodeVdoAll['dataListVDO'][$i-1])) {
+                        echo '<p class="text-center" style="margin: 40px 0;">ไม่พบรายการวีดีโอ</p>';
+                        //echo '"'.Session('cerentPage').'"';
+                        break;
+                    }else{
+                        $VdoUrl = $jsonDecodeVdoAll['dataListVDO'][$i-1]['VdoUrl'];
+                        $Headline = $jsonDecodeVdoAll['dataListVDO'][$i-1]['Headline'];
+                        $Highlight = $jsonDecodeVdoAll['dataListVDO'][$i-1]['Highlight'];
+                        $ID =$jsonDecodeVdoAll['dataListVDO'][$i-1]['VdoID'];
+                    }
+                        //echo '"'.Session('cerentPage').'"';
+
+                    Session::put('cerentPage', $countPage);
+                }
+            }
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -35,7 +94,7 @@ class VideoController extends Controller
             $bodyVdoAll = $response->getBody();
             $jsonDecodeVdoAll = json_decode($bodyVdoAll, true);
             
-            Session::put('countPage', '8'); //+3 ทีละ 3
+            Session::put('countPage', '7'); //+ๅ
             
             if (!empty($jsonDecodeVdoAll['dataListVDO'])) {
                 return view('homepage.video')
@@ -44,7 +103,6 @@ class VideoController extends Controller
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-
      
     }
 
