@@ -32,6 +32,14 @@
                             padding-top: 20px;
                             padding-bottom: 5px;
                     }
+                    .page_content{
+                        padding: 0 3em;
+                    }
+                }
+                @media screen and (min-width: 75em){
+                    .page_content{
+                        padding: 0 6em;
+                    }
                 }
     </style>
 <div class="cf" role="main">
@@ -39,7 +47,7 @@
     <section class="">
         <article class="post">
             <div class="post-content gap-content">
-                <div class="row vc_row-fluid">
+                <div class="row vc_row-fluid page_content">
                     <div class="medium-12 small-12 columns ">
                         <aside class="gap cf" style="height:40px;">
                         </aside>
@@ -55,7 +63,7 @@
                                 <fieldset>
                                     <div class="input-group input-group-lg col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                                         <div class="icon-addon addon-lg">
-                                            <input aria-describedby="basic-addon2" class="form-control center-block" id="s" name="s" placeholder="ชื่อผลผลิต" type="text">
+                                            <input aria-describedby="basic-addon2" class="form-control center-block" id="key" name="key" placeholder="ชื่อผลผลิต" type="text">
                                             </input>
                                         </div>
                                         <span class="input-group-addon" id="basic-addon2" style="background-color: #5d5d5d;border: 1px solid #5d5d5d;border-radius: 0px">
@@ -75,7 +83,7 @@
         </article>
     </section>
     <!-- End Archive title -->
-    <div class="row archive-page-container">
+    <div class="row archive-page-container ">
         <div class="small-12 medium-8 columns">
             <div id="posts">
                 @if(!empty($jsonDecodeNewsAll['dataListNews']))
@@ -146,12 +154,12 @@
                                     </strong>
                                     @foreach(explode(',', $jsonDecodeNewsAll['dataListNews'][$key]['Tag'] ) as $key => $Tag )
                                         @if($key==0)
-                                            <a href="{{ URL::to('/search?tag=' . $Tag) }}" style="color:#2856FA;" title="">
+                                            <a href="{{ URL::to('/search/tag/' . $Tag) }}" style="color:#2856FA;" title="">
                                                 {{ $Tag }}
                                             </a>
                                         @else
                                             ,
-                                           <a href="{{ URL::to('/search?tag=' . $Tag) }}" style="color:#2856FA;" title="">
+                                           <a href="{{ URL::to('/search/tag/' . $Tag) }}" style="color:#2856FA;" title="">
                                                 {{ $Tag }}
                                             </a>
                                         @endif

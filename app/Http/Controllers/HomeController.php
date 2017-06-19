@@ -133,17 +133,67 @@ class HomeController extends Controller {
 	}
 
 	/* Search Product */
-	public function Search() {
+	public function SearchProduct() {
 		$client = new Client([
 			// Base URI is used with relative requests
 			// You can set any number of default request options.
 			'timeout' => 2.0,
 		]);
-		$key = \Request::get('key'); //<-- we use global request to get the param of URI
+		
+		$key_search = \Request::get('key'); //<-- we use global request to get the param of URI
 
-		return view('homepage.search')
-			->with('key', $key);
+        try {
+	        //ProductDetails.
+		        $response = $client->request("GET", "http://farmerspace.azurewebsites.net/handlerforweb.ashx",
+		            ['query' =>
+		                ['Method' => 'ProductDetails',
+		                    'ProductName' => $key_search,
+		                ],
+		            ]);
 
+		        $bodyProductDetails = $response->getBody();
+		        $jsonDecodeProductDetails = json_decode($bodyProductDetails, true);
+        
+       		//ProductSpecies.
+		        $response = $client->request("GET", "http://farmerspace.azurewebsites.net/handlerforweb.ashx",
+		            ['query' =>
+		                ['Method' => 'ProductSpecies',
+		                    'ProductName' => $key_search,
+		                ],
+		            ]);
+
+		        $bodyProductSpecies = $response->getBody();
+		        $jsonDecodeProductSpecies = json_decode($bodyProductSpecies, true);
+        
+        	//ProductNews.
+		        $response = $client->request("GET", "http://farmerspace.azurewebsites.net/handlerforweb.ashx",
+		            ['query' =>
+		                ['Method' => 'ProductNews',
+		                    'ProductName' => $key_search,
+		                ],
+		            ]);
+
+		        $bodyProductNews = $response->getBody();
+		        $jsonDecodeProductNews = json_decode($bodyProductNews, true);
+
+
+	        if (!empty($jsonDecodeProductDetails['dataListProductDetails']) || !empty($jsonDecodeProductSpecies['dataListProductSpecies']) || !empty($jsonDecodeProductNews['dataListProductNews'])) {
+	            return view('homepage.search')
+	                ->with('jsonDecodeProductDetails', json_decode($bodyProductDetails, true))
+	                ->with('jsonDecodeProductSpecies', json_decode($bodyProductSpecies, true))
+	                ->with('jsonDecodeProductNews', json_decode($bodyProductNews, true))
+					->with('key', $key_search);
+
+	        }
+
+   		} catch (\Exception $e) {
+            return $e->getMessage();
+        }
+	}
+
+	/* Search Tag */
+	public function SearchTag($tag) {
+		echo $tag;
 	}
 
 	

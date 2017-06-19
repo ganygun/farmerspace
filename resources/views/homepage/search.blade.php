@@ -64,6 +64,10 @@
             .gap-content {
                 padding-top: 40px;
             }
+            .resizeimg{
+                width: 75px!important;
+                height: 75px;
+            }
         }
 
         @media screen and (min-width: 30em) {
@@ -72,6 +76,10 @@
             }
             .sub-head {
                 font-size: 26px!important
+            }
+            .resizeimg{
+                width: 100px!important;
+                height: 100px;
             }
 
         }
@@ -95,6 +103,13 @@
             .gap_img_product{
             margin-top: -180px;
             }
+            .resizeimg{
+                width: 125px!important;
+                height: auto;
+            }
+            .page_content{
+                padding: 0 3em;
+            }
         }
          @media screen and (min-width: 64em){
             .gap_img_product{
@@ -104,6 +119,9 @@
           @media screen and (min-width: 65em){
             .gap_img_product{
             margin-top: -60px;
+            }
+            .page_content{
+                padding: 0 6em;
             }
         }
 
@@ -185,7 +203,7 @@
     <section class="">
         <article class="post">
             <div class="post-content gap-content">
-                <div class="row vc_row-fluid">
+                <div class="row vc_row-fluid page_content">
                     <div class="medium-12 small-12 columns ">
                         <aside class="gap cf" style="height:40px;">
                         </aside>
@@ -221,117 +239,102 @@
         </article>
     </section>
     <!-- End Archive title -->
-    <div class="row archive-page-container">
-
+    <div class="row archive-page-container page_content">
+        @if(!empty($jsonDecodeProductDetails['dataListProductDetails']))
         <!-- Content #1  Mobile-->
-        <div class="small-12 columns hidden-sm hidden-md hidden-lg text-center" style="word-break: break-word;">
-            <p>{{ $key }}</p>
-            <h1>{{ $key }}</h1>
-            <div style="margin-top: 40px;"></div>
-            <!-- Pictrue Product Mobile -->
-            <div class="frame basic" id="basic">
-                <ul id="image-gallery-1" class="cf clearfix">
-                  <li><img src="{{ URL::asset('homepage/images/LogoMini.png') }}" data-high-res-src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" class="gallery-items"></li>
-                  <li><img src="{{ URL::asset('homepage/images/LogoMini.png') }}" data-high-res-src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" class="gallery-items"></li>
-                  <li><img src="{{ URL::asset('homepage/images/LogoMini.png') }}" data-high-res-src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" class="gallery-items"></li>
-                  <li><img src="{{ URL::asset('homepage/images/LogoMini.png') }}" data-high-res-src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" class="gallery-items"></li>
-                  <li><img src="{{ URL::asset('homepage/images/LogoMini.png') }}" data-high-res-src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" class="gallery-items"></li>
-                  <li><img src="{{ URL::asset('homepage/images/LogoMini.png') }}" data-high-res-src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" class="gallery-items"></li>
-                </ul>
-            </div>
+            <div class="small-12 columns hidden-sm hidden-md hidden-lg text-center" style="word-break: break-word;">
+                <!-- English Name -->
+                <p>{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['NameENG'] }}</p> 
+                <!-- Thai Name -->
+                <h1>{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['NameTHA'] }}</h1>
+                <div style="margin-top: 40px;"></div>
+                <!-- Pictrue Product Mobile -->
+                <div class="frame basic" id="basic">
+                    <!-- Main ProductPicture -->
+                    <ul id="image-gallery-1" class="cf clearfix">
+                        <li><img src="{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['ProductPicture'] }}" data-high-res-src="{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['ProductPicture'] }}" alt="" class="gallery-items"></li>
+                        <!-- Sub OerviewPicture -->
+                        @if(!empty($jsonDecodeProductDetails['dataListProductDetails'][0]['OverviewPicture']))
+                        <li></li>
+                        @else
+                        @endif
+                    </ul>
+                </div>
 
-            <div style="margin-bottom: 40px;"></div>
-            <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-            <br>
-            <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
-        </div>
+                <div style="margin-bottom: 40px;"></div>
+                <!-- ItemDescription -->
+                <p>{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['ItemDescription'] }}</p>
+                <br>
+                <!-- GrowingGuide -->
+                <p>{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['GrowingGuide'] }}</p>
+            </div>
         <!-- Content #1  Desktop-->
-        <div class="small-12 medium-8 columns  hidden-xs" style="word-break: break-word;">
-            <p>{{ $key }}</p>
-            <h1>{{ $key }}</h1>
-            <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-            <br>
-            <p> Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
-        </div>
-
-        <!-- Pictrue Product Desktop -->
-        <div class=" medium-4 columns hidden-xs" style="margin-top: 20px;">
-
-            <div id="image-gallery-1" class="cf clearfix">
-                <img id="imagePreview" src="{{ URL::asset('homepage/images/LogoMini.png') }}" data-high-res-src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" class="gallery-items img img-responsive image center-block" style="margin-bottom: 20px;height: 250px" >
+            <div class="small-12 medium-8 columns  hidden-xs" style="word-break: break-word;">
+                <!-- English Name -->
+                <p>{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['NameENG'] }}</p> 
+                <!-- Thai Name -->
+                <h1>{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['NameTHA'] }}</h1>
+                 <!-- ItemDescription -->
+                <p>{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['ItemDescription'] }}</p>
+                <br>
+                <!-- GrowingGuide -->
+                <p>{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['GrowingGuide'] }}</p>
             </div>
-            <div class="img_sub_hover">
-                <img id="imageid" onmouseover="preview(this)" src="{{ URL::asset('homepage/images/LogoBergerBar.png') }}" alt="" width="80px" >
-                <img id="imageid" onmouseover="preview(this)" src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" width="80px" >
-                <img id="imageid" onmouseover="preview(this)" src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" width="80px" >
+
+            <!-- Pictrue Product Desktop -->
+            <div class=" medium-4 columns hidden-xs" style="margin-top: 20px;">
+                <!-- Main ProductPicture -->
+                <div id="image-gallery-1" class="cf clearfix">
+                    <img id="imagePreview" src="{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['ProductPicture'] }}" data-high-res-src="{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['ProductPicture'] }}" alt="" class="gallery-items img img-responsive image center-block" style="margin-bottom: 20px;height: auto;width: 100%" >
+                </div>
+                <div class="img_sub_hover">
+                    <img id="imageid" onmouseover="preview(this)" src="{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['ProductPicture'] }}" alt="" width="80px" >
+                    @if(!empty($jsonDecodeProductDetails['dataListProductDetails'][0]['OverviewPicture']))
+                    @else
+                    @endif
+                </div>
             </div>
-        </div>
+        @endif
         <div class="small-12 medium-8 columns">
-            <!-- Content #2 -->
+        @if(!empty($jsonDecodeProductSpecies['dataListProductSpecies']))
+        <!-- Content #2 -->
             <div style="display: block;margin-top: 20px;">
                 <h3 class="event">
-                                    <a href="#" title="" class="text-left" style="color: #222!important;white-space:nowrap;font-weight: 600">สายพันธุ์</a>
-                                </h3>
+                    <a href="#" title="" class="text-left" style="color: #222!important;white-space:nowrap;font-weight: 600">สายพันธุ์</a>
+                </h3>
             </div>
             <div style="display: block;margin-top: 20px;">
                 <!-- Nav tabs -->
                 <ul id="myTabs " class="nav nav-tabs" role="tablist" style="border:none;">
                         <li role="presentation" class="active" style="margin: 0 5px;">
                             <div class="text-center" style="display: inline-flex;flex-wrap: wrap;">
-                                <h4><a class="label tag"  href="#home" aria-controls="home" role="tab" data-toggle="tab">test1</a></h4>
-                            </div>
-                        </li>
-                        <li role="presentation" style="margin: 0 5px;">
-                            <div class="text-center" style="display: inline-flex;flex-wrap: wrap;">
-                                <h4><a class="label tag"  href="#profile" aria-controls="profile" role="tab" data-toggle="tab">test2</a></h4>
+                                <h4>
+                                    <a class="label tag"  href="#{{ $jsonDecodeProductSpecies['dataListProductSpecies'][0]['SpeciesName'] }}" aria-controls="{{ $jsonDecodeProductSpecies['dataListProductSpecies'][0]['SpeciesName'] }}" role="tab" data-toggle="tab">{{ $jsonDecodeProductSpecies['dataListProductSpecies'][0]['SpeciesName'] }}
+                                    </a>
+                                </h4>
                             </div>
                         </li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="home">
+                    <div role="tabpanel" class="tab-pane fade in active" id="{{ $jsonDecodeProductSpecies['dataListProductSpecies'][0]['SpeciesName'] }}">
                                  <div style="border-left: 15px solid #cccccc;padding:0 15px;">
-                                            <h1>test1</h1>
+                                            <h1>{{ $jsonDecodeProductSpecies['dataListProductSpecies'][0]['SpeciesName'] }}</h1>
                                             <div class="img_sub_hover" style="margin-bottom: 30px; width: 100%">
-                                                <img id="imageid" class="gallery-items" src="{{ URL::asset('homepage/images/LogoBergerBar.png') }}" alt="" width="80px" >
-                                                <img id="imageid" class="gallery-items" src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" width="80px" >
-                                                <img id="imageid" class="gallery-items" src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" width="80px" >
-                                                <img id="imageid" class="gallery-items" src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" width="80px" >
+                                                @if(!empty($jsonDecodeProductSpecies['dataListProductSpecies'][0]['SpeciesPicture']))
+                                                @else
+                                                @endif
                                             </div>
                                         </div>
                                         <div style="padding-left:30px">
-                                            <p>
-                                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                            </p>
+                                            <p>{{ $jsonDecodeProductSpecies['dataListProductSpecies'][0]['ItemDescription'] }}</p>
+                                            @if(!empty($jsonDecodeProductSpecies['dataListProductSpecies'][0]['GrowingGuide']))
                                             <h3 class="event">
                                                 <a href="#" title="" style="color: #222!important;white-space:nowrap;font-weight: 600">วิธีการปลูก</a>
                                             </h3>
-                                            <p>
-                                            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                            </p>
+                                            <p>{{ $jsonDecodeProductSpecies['dataListProductSpecies'][0]['GrowingGuide'] }}</p>
+                                            @endif
                                         </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="profile">
-                                <div style="border-left: 15px solid #cccccc;padding:0 15px;">
-                                            <h1>test2</h1>
-                                            <div class="img_sub_hover" style="margin-bottom: 30px; width: 100%">
-                                                <img id="imageid" class="gallery-items" src="{{ URL::asset('homepage/images/LogoBergerBar.png') }}" alt="" width="80px" >
-                                                <img id="imageid" class="gallery-items" src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" width="80px" >
-                                                <img id="imageid" class="gallery-items" src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" width="80px" >
-                                                <img id="imageid" class="gallery-items" src="{{ URL::asset('homepage/images/LogoMini.png') }}" alt="" width="80px" >
-                                            </div>
-                                </div>
-                                <div style="padding-left:30px">
-                                            <p>
-                                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                            </p>
-                                            <h3 class="event">
-                                                <a href="#" title="" style="color: #222!important;white-space:nowrap;font-weight: 600">วิธีการปลูก</a>
-                                            </h3>
-                                            <p>
-                                            sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                            </p>
-                                </div>
                     </div>
                 </div>
             </div>
@@ -344,130 +347,69 @@
                     </div>
                 </div>
             </div>
-            <!-- Content #3 -->
+        @endif
+       
+        @if(!empty($jsonDecodeProductNews['dataListProductNews']))
+        <!-- Content #3 -->
             <div style="display: block;margin-top: 20px;">
                 <h3 class="event">
                         <a href="#" title="" class="text-left" style="color: #222!important;white-space:nowrap;font-weight: 600">ข่าวที่เกี่ยวข้อง</a>
-                    </h3>
+                </h3>
             </div>
-            <div style="display: block;margin-top: 20px;">
-                <div id="posts">
+            <div style="display: block;margin-top: 20px;padding-bottom: 40px;">
+            <style>
+                .load_content{
+                    overflow: hidden;
+                    display: -webkit-box;
+                    max-height: 460px;
+                    -webkit-box-orient: vertical;
+                }
+            </style>
+                <div id="posts" class="load_content">
+                    @foreach($jsonDecodeProductNews['dataListProductNews'] as $key => $dataListProductNews)
                     <article class="post style4" itemscope="" itemtype="http://schema.org/Article" role="article">
-                        <figure class="post-gallery">
-                            <a href="https://thematter.co/byte/tips-for-picking-up-a-new-lingo/17331" title="เรียนภาษาที่ 2 อย่างไร ไม่ให้เป็น ‘ภาระสมอง’">
-                                <img class="resizeimg" height="125" sizes="(max-width: 125px) 100vw, 125px" src="https://i0.wp.com/thematter.co/wp-content/uploads/2017/01/language-cover.jpg?resize=125%2C125&ssl=1" width="125">
+                        <figure>
+                            <a href="{{ URL::to('/news/' .$jsonDecodeProductNews['dataListProductNews'][$key]['NewsID']) }}" title="{{ $jsonDecodeProductNews['dataListProductNews'][$key]['Title'] }}">
+                                <img style="cursor: pointer;" height="125" sizes="(max-width: 125px) 100vw, 125px" src="{{ $jsonDecodeProductNews['dataListProductNews'][$key]['Picture'] }}" width="125">
                                 </img>
                             </a>
                         </figure>
                         <div class="style4-container">
                             <header class="post-title entry-header">
                                 <h5 itemprop="headline">
-                                                                            <a href="https://thematter.co/byte/tips-for-picking-up-a-new-lingo/17331" title="เรียนภาษาที่ 2 อย่างไร ไม่ให้เป็น ‘ภาระสมอง’">
-                                                                                เรียนภาษาที่ 2 อย่างไร ไม่ให้เป็น ‘ภาระสมอง’
-                                                                            </a>
-                                                                        </h5>
+                                    <a href="{{ URL::to('/news/' .$jsonDecodeProductNews['dataListProductNews'][$key]['NewsID']) }}" title="{{ $jsonDecodeProductNews['dataListProductNews'][$key]['Title'] }}">
+                                        {{ $jsonDecodeProductNews['dataListProductNews'][$key]['Title'] }}
+                                    </a>
+                                </h5>
                             </header>
                             <div class="post-content small">
                                 <p>
-                                    ธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจ
+                                    {{ $jsonDecodeProductNews['dataListProductNews'][$key]['Abstract'] }}
                                 </p>
                             </div>
                         </div>
                     </article>
-                    <article class="post style4" itemscope="" itemtype="http://schema.org/Article" role="article">
-                        <figure class="post-gallery">
-                            <a href="https://thematter.co/byte/tips-for-picking-up-a-new-lingo/17331" title="เรียนภาษาที่ 2 อย่างไร ไม่ให้เป็น ‘ภาระสมอง’">
-                                <img class="resizeimg" height="125" sizes="(max-width: 125px) 100vw, 125px" src="https://i0.wp.com/thematter.co/wp-content/uploads/2017/01/language-cover.jpg?resize=125%2C125&ssl=1" width="125">
-                                </img>
-                            </a>
-                        </figure>
-                        <div class="style4-container">
-                            <header class="post-title entry-header">
-                                <h5 itemprop="headline">
-                                                                            <a href="https://thematter.co/byte/tips-for-picking-up-a-new-lingo/17331" title="เรียนภาษาที่ 2 อย่างไร ไม่ให้เป็น ‘ภาระสมอง’">
-                                                                                เรียนภาษาที่ 2 อย่างไร ไม่ให้เป็น ‘ภาระสมอง’
-                                                                            </a>
-                                                                        </h5>
-                            </header>
-                            <div class="post-content small">
-                                <p>
-                                    ธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจ
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="post style4" itemscope="" itemtype="http://schema.org/Article" role="article">
-                        <figure class="post-gallery">
-                            <a href="https://thematter.co/byte/tips-for-picking-up-a-new-lingo/17331" title="เรียนภาษาที่ 2 อย่างไร ไม่ให้เป็น ‘ภาระสมอง’">
-                                <img class="resizeimg" height="125" sizes="(max-width: 125px) 100vw, 125px" src="https://i0.wp.com/thematter.co/wp-content/uploads/2017/01/language-cover.jpg?resize=125%2C125&ssl=1" width="125">
-                                </img>
-                            </a>
-                        </figure>
-                        <div class="style4-container">
-                            <header class="post-title entry-header">
-                                <h5 itemprop="headline">
-                                                                            <a href="https://thematter.co/byte/tips-for-picking-up-a-new-lingo/17331" title="เรียนภาษาที่ 2 อย่างไร ไม่ให้เป็น ‘ภาระสมอง’">
-                                                                                เรียนภาษาที่ 2 อย่างไร ไม่ให้เป็น ‘ภาระสมอง’
-                                                                            </a>
-                                                                        </h5>
-                            </header>
-                            <div class="post-content small">
-                                <p>
-                                    ธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจ
-                                </p>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="post style4" itemscope="" itemtype="http://schema.org/Article" role="article">
-                        <figure class="post-gallery">
-                            <a href="https://thematter.co/byte/tips-for-picking-up-a-new-lingo/17331" title="เรียนภาษาที่ 2 อย่างไร ไม่ให้เป็น ‘ภาระสมอง’">
-                                <img class="resizeimg" height="125" sizes="(max-width: 125px) 100vw, 125px" src="https://i0.wp.com/thematter.co/wp-content/uploads/2017/01/language-cover.jpg?resize=125%2C125&ssl=1" width="125">
-                                </img>
-                            </a>
-                        </figure>
-                        <div class="style4-container">
-                            <header class="post-title entry-header">
-                                <h5 itemprop="headline">
-                                                                            <a href="https://thematter.co/byte/tips-for-picking-up-a-new-lingo/17331" title="เรียนภาษาที่ 2 อย่างไร ไม่ให้เป็น ‘ภาระสมอง’">
-                                                                                เรียนภาษาที่ 2 อย่างไร ไม่ให้เป็น ‘ภาระสมอง’
-                                                                            </a>
-                                                                        </h5>
-                            </header>
-                            <div class="post-content small">
-                                <p>
-                                    ธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจธรรมชาติของการเรียนรู้มักจะไม่ชอบฝืนตัวเอง สมองก็เช่นกัน ยิ่งคุณตั้งใจ
-                                </p>
-                            </div>
-                        </div>
-                    </article>
+                    @endforeach
                 </div>
                 <!-- Load page -->
-            <p class="text-center" id="loading">
-                <img alt="Loading…" src="{{ URL::asset('homepage/images/loading.gif') }}" style="width: 150px;"/>
-            </p>
-            <script>
-                $(document).ready(function() {
-                var win = $(window);
-                var i=1;
-                // Each time the user scrolls
-                win.scroll(function() {
-                    // End of the document reached?
-                    if ($(document).height() - win.height() == win.scrollTop()) {
-                        $('#loading').show();
-                        i++;
-                        $.ajax({
-                            url: '/search/page/{{ $key }}/'+i,
-                            dataType: 'html',
-                            success: function(html) {
-                                $('#posts').append(html);
-                                $('#loading').hide();
-                            }
-                        });
-                    }
-                });
-            });
-            </script>
-            </div>
+               <div class="fixed-me">
+                    <div class="wpb_widgetised_column wpb_content_element">
+                        <div class="wpb_wrapper">
+                            <div id="text-9" class="widget cf style3 widget_text">
+                                <button class="btn textwidget" id="loadmore" style="display: block;width: 100%;height: 60px;text-align: center;font-size: 19px;background-color: #5d5d5d;word-break: break-all;text-align: center;vertical-align: middle;padding-top: 20px;margin-top: -50px;color:#fff;font-weight: 600">Load more<br><i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $('#loadmore').click(function() {
+                        $(this).hide();
+                        $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+                        $('.load_content').css({ 'max-height': 'none' }); // for increase use += ..px 
+                    });
+                </script>
+        @endif
         </div>
         <!-- Ads Desktop -->
         <aside class="sidebar medium-4 columns hidden-xs gap_img_product">

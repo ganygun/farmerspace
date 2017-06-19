@@ -136,8 +136,7 @@
                                         <h1 class="head-line">สะดวกกว่า</h1>
                                         <h3 class="sub-head">กับการค้นหาข่าวที่คุณสนใจ</h3>
                                     <!-- Start SearchForm -->
-                                      <!--  <form method="get" class="searchform" role="search" action="{{ URL::to('/search') }} ">
-                                      -->
+                                       <form method="get" class="searchform" role="search" action="{{ URL::to('/search') }} ">
                                             <fieldset>
                                                 <div class="input-group input-group-lg  col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                                                     <div class="icon-addon addon-lg">
@@ -146,7 +145,7 @@
                                                     <span id="basic-addon2"  class="input-group-addon" style="background-color: #5d5d5d;border: 1px solid #5d5d5d;border-radius: 0px"><i class="fa fa-search" style="color: #fff;"></i></span>
                                                 </div>
                                             </fieldset>
-                                            <!-- </form> -->
+                                        </form>
                                     <!-- End SearchForm -->
                                     </div>
                                     <aside class="gap-header"></aside>

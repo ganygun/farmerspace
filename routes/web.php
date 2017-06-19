@@ -40,7 +40,8 @@ Route::get('admins/search', array('uses' => 'Admins\ProductController@SearchProd
 Route::get('admins/form/search', array('uses' => 'Admins\FormController@SearchFormProduct'));
 Route::get('admins/writing/search', array('uses' => 'Admins\WritingController@SearchNews'));
 Route::get('admins/product/overview/search', array('uses' => 'Admins\OverviewController@SearchSpecies'));
-Route::get('/search', array('uses' => 'HomeController@Search'));
+Route::get('/search', array('uses' => 'HomeController@SearchProduct'));
+Route::get('/search/tag/{tag}', array('uses' => 'HomeController@SearchTag'));
 // ----------------------------------------------
 
 // ------------ Admin Register Choose Job --------------------------

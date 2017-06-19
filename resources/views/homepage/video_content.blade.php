@@ -223,12 +223,12 @@
                                 </strong>
                                 @foreach(explode(',', $Tag) as $key => $Tag )
                                     @if($key==0)
-                                        <a href="" style="color:#dd4b39;font-size: 1.2em" title="">
+                                        <a href="{{ URL::to('/search/tag/' . $Tag) }}" style="color:#dd4b39;font-size: 1.2em" title="">
                                         {{ $Tag }}
                                         </a>
                                     @else
                                         ,
-                                        <a href="" style="color:#dd4b39;font-size: 1.2em" title="">
+                                        <a href="{{ URL::to('/search/tag/' . $Tag) }}" style="color:#dd4b39;font-size: 1.2em" title="">
                                         {{ $Tag }}
                                         </a>
                                     @endif
