@@ -249,7 +249,7 @@
                                         <!--  Get All Species form this product   -->
                                         @if(!empty($jsonDecode_bodySpecies['dataListSpecies']))
                                             @foreach($jsonDecode_bodySpecies['dataListSpecies'] as $dataListSpecies)
-                                                @if($dataListSpecies['Specy'] != "Overview")
+                                                @if($dataListSpecies['Specy'] != "Overview" && $dataListSpecies['Specy'] != "overview")
                                                     <tr style="border-bottom:2px solid #5cb85c">
                                                             <td>
                                                                 <input type="text" readOnly="true"  value="{{ $dataListSpecies['Specy'] }}" style="background-color: transparent;border: none;border-color: transparent;">

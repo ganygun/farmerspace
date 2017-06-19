@@ -366,7 +366,9 @@ class ProductController extends Controller {
 		// -------------- Check New Species
 		if (!empty($request->input('spiciesName'))) {
 			foreach ($request->input('spiciesName') as $value) {
-
+				if ($value == 'overview') {
+		 			$value = 'Overview';
+				}
 				if (substr(Session::get('productKey'), 2, 2) == 'TH') {
 					$url = 'http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Insert_SpeciesItem_THA';
 					$postData = '&UserID=' . Session::get('key') . '&ProductID=' . $id . '&Species=' . $value . '&CreateDate=' . date("Y-m-d H:i:s") . '&ItemDescription=&GrowingGuide=';

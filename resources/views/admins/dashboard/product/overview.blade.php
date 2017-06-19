@@ -135,12 +135,41 @@
     <!--mainpage chit-chating-->
     <div class="chit-chat-layer1">
         <form  role="search" method="GET" action="{{ url('/admins/product/overview/search') }}">
-                <!--search-box-->
+            <!--search-box-->
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>           
             <div class="col-md-8 col-md-offset-2 chit-chat-layer1-left text-center" style="margin-bottom: 20px;">
                 <p class=" text-center">@include('flash::message')</p>
                 <!-- {{ session('productKey') }} -->
-                <div class="col-md-6 col-md-offset-2"><div class="form-group"><input type="text" class="form-control" name="search" placeholder="Search..."></div></div>
-                <div class="col-md-3"><div class="form-group"><input type="submit" class="btn btn-block btn-primary" value="Search Species"></div></div>
+                <div class="col-md-6 col-md-offset-2">
+                    <div class="form-group">
+                        <select class="selectpicker form-control" data-live-search="true" name="search" id="search" required>
+                         <option data-tokens="null" value="null" disabled selected>ระบุ Species Name</option>
+                          @if(!empty($jsonDecodeGetProduct['dataListProduct']))
+                                @foreach($jsonDecodeGetProduct['dataListProduct'] as $dataListProduct)
+                                  <option data-tokens="{{ $dataListProduct['ProductName'] }}" value="{{ $dataListProduct['ProductID'] }}">{{ $dataListProduct['ProductName'] }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="submit" id="btn_search" class="btn btn-block btn-primary" value="Search Species">
+                    </div>
+                </div>
+                <script>
+                    $('#search').on("change", function () {
+                        if( $('#search').val().length > 0 ) {
+                            $('#btn_search').prop("disabled", false);
+                        } else {
+                            $('#btn_search').prop("disabled", true);
+                        }
+                    });
+                </script>
+
             </div>
         </form>
         <form action="/admins/product/overview/{{ session('productKey') }}" method="POST">
