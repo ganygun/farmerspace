@@ -309,9 +309,16 @@
             </div>
         @endif
   
-
+        @foreach($jsonDecodeProductOverview['dataListProductOverview'] as $dataListProductOverview)
+            @if($dataListProductOverview['Species'] != 'Overview')
+                @php $checkSpecies = 2; @endphp
+                @break
+            @else
+                @php $checkSpecies = 1; @endphp
+            @endif
+        @endforeach
         <div class="small-12 medium-8 columns">
-            @if(!empty($jsonDecodeProductOverview['dataListProductOverview']))
+            @if(!empty($jsonDecodeProductOverview['dataListProductOverview']) && $checkSpecies == 2)
             <!-- Content #2 -->
             <div style="display: block;margin-top: 20px;">
                 <h3 class="event">
