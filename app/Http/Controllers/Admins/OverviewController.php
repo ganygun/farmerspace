@@ -48,12 +48,23 @@ class OverviewController extends Controller {
 			$jsonDecode_bodySearch = json_decode($bodySearch, true);
 		// --------------------------------------------
 
+		// Get Species Name--------------------------------------------------------------------------------
+			$response = $client->request("GET", "http://farmerspace.azurewebsites.net/handlerforweb.ashx",
+				['query' =>
+					['Method' => 'ProductSpecies',
+						'ProductName' => Session::get('productName'),
+					],
+				]);
+			$bodyGetSpecies = $response->getBody();
+			$jsonDecodeGetSpecies = json_decode($bodyGetSpecies, true);
+		// End --------------------------------------------------------------------------------
+		// 
 		if (!empty($jsonDecode_bodySearch['dataListSpecies'])) {
 			return view('admins.dashboard.product.overview')
 				->with('jsonDecode_bodySearch', json_decode($bodySearch, true))
+				->with('jsonDecodeGetSpecies', json_decode($bodyGetSpecies, true))
 				->with('jsonDecode_bodyImage', json_decode($bodyImage, true));
-			//->with('result', $search);
-			# code...
+				//->with('result', $search);
 		} else {
 			flash('Search is not found', 'danger');
 			return back();
@@ -146,21 +157,21 @@ class OverviewController extends Controller {
 		$jsonDecode_bodySearch = json_decode($bodySearch, true);
 		// --------------------------------------------
 
-		// Get Product Name/ID --------------------------------------------------------------------------------
+		// Get Species Name--------------------------------------------------------------------------------
 			$response = $client->request("GET", "http://farmerspace.azurewebsites.net/handlerforweb.ashx",
 				['query' =>
-					['Method' => 'Search_Product',
-						'ProductName' => '',
+					['Method' => 'ProductSpecies',
+						'ProductName' => Session::get('productName'),
 					],
 				]);
-			$bodyGetProduct = $response->getBody();
-			$jsonDecodeGetProduct = json_decode($bodyGetProduct, true);
+			$bodyGetSpecies = $response->getBody();
+			$jsonDecodeGetSpecies = json_decode($bodyGetSpecies, true);
 		// End --------------------------------------------------------------------------------
 		// 
 		if (!empty($jsonDecode_bodySearch['dataListSpecies'])) {
 			return view('admins.dashboard.product.overview')
 				->with('jsonDecode_bodySearch', json_decode($bodySearch, true))
-				->with('jsonDecodeGetProduct', json_decode($bodyGetProduct, true))
+				->with('jsonDecodeGetSpecies', json_decode($bodyGetSpecies, true))
 				->with('jsonDecode_bodyImage', json_decode($bodyImage, true));
 		} else {
 			return view('admins.dashboard.product.overview')
@@ -261,6 +272,7 @@ class OverviewController extends Controller {
 
 		// -------------- Success
 		if ($bodySpecies == "Updated" && $bodyImage == "Completed") {
+			Session::forget('productName');
 			flash('product was successfully updated', 'success');
 			return back(); //redirect('admins/product/overview/' . $id . '/edit');
 		} else {

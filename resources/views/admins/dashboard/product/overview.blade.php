@@ -1,37 +1,39 @@
 @extends('admins.layouts.master') @section('content')
 <!--header start here-->
-<div class="header-main">
-    <div class="header-left">
-        <h4 style="margin-top: 0.5em;">
-                            Add Product / Overview
-                        </h4>
-        <div class="clearfix"> </div>
-    </div>
-    <div class="header-right">
-        <form role="search" method="GET" action="{{ url('/admins/search') }}">
-            {{ csrf_field() }}
-            <!--search-box-->
-            <div class="search-box">
-                <input type="text" class="form-control" name="search" placeholder="Search...">
-                <input type="submit" value="">
-            </div>
-        </form>
-        <!--//end-search-box-->
-        <div class="profile_details_left">
-            <!--notifications of menu start -->
+<div class="header-main" style="padding: 1.7em 2em;">
+        <div class="header-left" style="width: 50%">
+            <h2 style="margin-top: 0.3em;color: #6495ed">
+                            <small style="font-size: 24px;font-weight: 300;">
+                               Add Product / Create
+                            </small>
+                        </h2>
             <div class="clearfix"> </div>
         </div>
-        <!--notification menu end -->
-        <div class="profile_details">
-            <ul>
-                <li class="dropdown profile_details_drop">
-                </li>
-            </ul>
+        <div class="header-right" style="width: 50%">
+            <form role="search" method="GET" action="{{ url('/admins/search') }}">
+                {{ csrf_field() }}
+                <!--search-box-->
+                <div class="search-box">
+                    <input type="text" class="form-control" name="search" placeholder="Search...">
+                    <input type="submit" value="">
+                </div>
+            </form>
+            <!--//end-search-box-->
+            <div class="profile_details_left">
+                <!--notifications of menu start -->
+                <div class="clearfix"> </div>
+            </div>
+            <!--notification menu end -->
+            <div class="profile_details">
+                <ul>
+                    <li class="dropdown profile_details_drop">
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
         </div>
         <div class="clearfix"> </div>
     </div>
-    <div class="clearfix"> </div>
-</div>
 <!--heder end here-->
 
 <style type="text/css">
@@ -147,9 +149,13 @@
                     <div class="form-group">
                         <select class="selectpicker form-control" data-live-search="true" name="search" id="search" required>
                          <option data-tokens="null" value="null" disabled selected>ระบุ Species Name</option>
-                          @if(!empty($jsonDecodeGetProduct['dataListProduct']))
-                                @foreach($jsonDecodeGetProduct['dataListProduct'] as $dataListProduct)
-                                  <option data-tokens="{{ $dataListProduct['ProductName'] }}" value="{{ $dataListProduct['ProductID'] }}">{{ $dataListProduct['ProductName'] }}</option>
+                          @if(!empty($jsonDecodeGetSpecies['dataListProductSpecies']))
+                                {{ $temp = '' }} 
+                                @foreach($jsonDecodeGetSpecies['dataListProductSpecies'] as $dataListProductSpecies)
+                                    @if($dataListProductSpecies['SpeciesName'] != $temp)
+                                      <option data-tokens="{{ $dataListProductSpecies['SpeciesName'] }}" value="{{ $dataListProductSpecies['SpeciesName'] }}">{{ $dataListProductSpecies['SpeciesName'] }}</option>
+                                    {{ $temp = $dataListProductSpecies['SpeciesName'] }} 
+                                    @endif
                                 @endforeach
                             @endif
                         </select>

@@ -29,12 +29,19 @@ class LoginController extends Controller {
 		$password = Input::get('password');
 
 		try {
-			$uri = "http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Check_Login&Phone=" . $username . "&PWD=" . $password . "";
-			$response = \Httpful\Request::post($uri)
-				->contentType("text/html; charset=utf-8")
-				->send();
-
-			if ($response == "True") {
+			$client = new Client();
+		// -------------- Get Species Images
+			$response = $client->request("GET", "http://farmerspace.azurewebsites.net/HandlerForWeb.ashx",
+				['query' =>
+					['Method' => 'Check_Login',
+						'Phone' => $username,
+						'PWD' => $password,
+					],
+				]);
+			$bodyImage = $response->getBody();
+		// --------------------------------------------
+		
+			if ($bodyImage == "True") {
 
 				$client = new Client();
 

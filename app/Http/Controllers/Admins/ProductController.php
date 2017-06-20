@@ -438,6 +438,7 @@ class ProductController extends Controller {
 
 		// -------------- Success
 		if ($bodyProduct == "Updated") {
+			Session::put('productName', $request->input('productName'));
 			flash('product was successfully updated', 'success');
 			return redirect('admins/product/overview/' . $id . '/edit');
 		} else {
