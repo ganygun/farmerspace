@@ -154,17 +154,6 @@ class HomeController extends Controller {
 		        $bodyProductDetails = $response->getBody();
 		        $jsonDecodeProductDetails = json_decode($bodyProductDetails, true);
         
-       		//ProductSpecies.
-		        $response = $client->request("GET", "http://farmerspace.azurewebsites.net/handlerforweb.ashx",
-		            ['query' =>
-		                ['Method' => 'ProductSpecies',
-		                    'ProductName' => $key_search,
-		                ],
-		            ]);
-
-		        $bodyProductSpecies = $response->getBody();
-		        $jsonDecodeProductSpecies = json_decode($bodyProductSpecies, true);
-        
         	//ProductNews.
 		        $response = $client->request("GET", "http://farmerspace.azurewebsites.net/handlerforweb.ashx",
 		            ['query' =>
@@ -176,13 +165,24 @@ class HomeController extends Controller {
 		        $bodyProductNews = $response->getBody();
 		        $jsonDecodeProductNews = json_decode($bodyProductNews, true);
 
+		    //ProductOverview.
+		        $response = $client->request("GET", "http://farmerspace.azurewebsites.net/handlerforweb.ashx",
+		            ['query' =>
+		                ['Method' => 'ProductOverview',
+		                    'ProductName' => $key_search,
+		                ],
+		            ]);
 
-	        if (!empty($jsonDecodeProductDetails['dataListProductDetails']) || !empty($jsonDecodeProductSpecies['dataListProductSpecies']) || !empty($jsonDecodeProductNews['dataListProductNews'])) {
+		        $bodyProductOverview = $response->getBody();
+		        $jsonDecodeProductOverview = json_decode($bodyProductOverview, true);
+
+
+	        if (isset($jsonDecodeProductDetails['dataListProductDetails']) || isset($jsonDecodeProductOverview['dataListProductOverview']) || isset($jsonDecodeProductNews['dataListProductNews'])) {
 	            return view('homepage.search')
 	                ->with('jsonDecodeProductDetails', json_decode($bodyProductDetails, true))
-	                ->with('jsonDecodeProductSpecies', json_decode($bodyProductSpecies, true))
 	                ->with('jsonDecodeProductNews', json_decode($bodyProductNews, true))
-					->with('key', $key_search);
+	                ->with('jsonDecodeProductOverview', json_decode($bodyProductOverview, true))
+					->with('key_search', $key_search);
 
 	        }
 

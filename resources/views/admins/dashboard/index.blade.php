@@ -1,39 +1,15 @@
 @extends('admins.layouts.master') @section('content')
   <!--header start here-->
-    <div class="header-main">
-                    <div class="header-left">
-                        <h2 style="margin-top: 0.3em;">
-                            Add Product
-                        </h2>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="header-right">
-                 <form  role="search" method="GET" action="{{ url('/admins/search') }}">
-                                            {{ csrf_field() }}
-                                 <!--search-box-->
-                        <div class="search-box">
-                            <input type="text" class="form-control" name="search" placeholder="Search...">
-                                <input type="submit" value="">
+  <div class="header-main" style="padding: 1.8em 2em;">
+    <div class="header-center">
+            <span style="font-weight: 300;font-size: 28px;color: #5d5d5d">
+            <i aria-hidden="true" class="fa fa-tachometer  fa-2x" style="color: #6495ed;vertical-align: bottom;padding-right: 10px;"></i>
+           Dashboard
+           </span>
+            <div class="clearfix"> </div>
+        </div>
 
-                        </div>
-                            </form>
-                        <!--//end-search-box-->
-                        <div class="profile_details_left">
-                            <!--notifications of menu start -->
-
-                            <div class="clearfix"> </div>
-                        </div>
-                        <!--notification menu end -->
-                        <div class="profile_details">
-                            <ul>
-                                <li class="dropdown profile_details_drop">
-
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <div class="clearfix"> </div>
+        <div class="clearfix"> </div>
     </div>
     <!--heder end here-->
 

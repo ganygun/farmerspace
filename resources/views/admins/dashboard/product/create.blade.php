@@ -352,26 +352,17 @@
                             $("#speciesTable").on('click', '.DeleteSpecie', function() {
                                  var r = confirm("Do you want to Delete this Record ?");
                                 if (r == true) {
-                                    var englishAlphabetAndNumber = /[A-Za-z0-9]/g;
                                     //get Species Name
                                     var speciename = $(this).parent().prev().prev().children().val();
                                     // --------------
-                                    if (englishAlphabetAndNumber.test(speciename)) {
+                                    
                                       //  alert(speciename);
-                                        var url = "http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?" + $.param({"Method": "DeleteSpeciesItem_ENG", "ProductID": '{{ session('productKey') }}', "Species": speciename});
+                                        var url = "http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?" + $.param({"Method": "DeleteSpeciesItem", "ProductID": '{{ session('productKey') }}', "Species": speciename});
                                         fetch(url,{
                                             mode: 'no-cors',
                                             method: 'get',
                                         });
-
-                                    }else{
-                                    // alert(speciename);
-                                       var url = "http://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?" + $.param({"Method": "DeleteSpeciesItem_THA", "ProductID": '{{ session('productKey') }}', "Species": speciename});
-                                        fetch(url,{
-                                            mode: 'no-cors',
-                                            method: 'get',
-                                        });
-                                    }
+        
                                         $(this).parent().parent().remove();
                                 }
                             });
