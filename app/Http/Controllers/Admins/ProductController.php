@@ -105,7 +105,7 @@ class ProductController extends Controller {
 		$client = new Client([
 			// Base URI is used with relative requests
 			// You can set any number of default request options.
-			'timeout' => 2.0,
+			'timeout' => 10.0,
 		]);
 
 		// Add product detail and get id product
@@ -237,6 +237,7 @@ class ProductController extends Controller {
 				]);
 			$bodyImage = $response->getBody();
 			if ((string) $bodyImage == "Completed") {
+				Session::put('productName', $request->input('productName'));
 				flash('new product was successfully added', 'success');
 				return redirect('/admins/product/overview/' . Session::get('productKey') . '/edit')->with('error', '1');
 			} else {

@@ -136,7 +136,7 @@
                                         <h1 class="head-line">สะดวกกว่า</h1>
                                         <h3 class="sub-head">กับการค้นหาข่าวที่คุณสนใจ</h3>
                                     <!-- Start SearchForm -->
-                                       <form method="get" class="searchform" role="search" action="{{ URL::to('/search') }} ">
+                                       <form method="get" class="searchform" role="search" action="{{ URL::to('/search') }}">
                                             <fieldset>
                                                 <div class="input-group input-group-lg  col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                                                     <div class="icon-addon addon-lg">

@@ -51,7 +51,7 @@ class OverviewController extends Controller {
 		// Get Species Name--------------------------------------------------------------------------------
 			$response = $client->request("GET", "http://farmerspace.azurewebsites.net/handlerforweb.ashx",
 				['query' =>
-					['Method' => 'ProductSpecies',
+					['Method' => 'ProductOverview',
 						'ProductName' => Session::get('productName'),
 					],
 				]);
@@ -160,7 +160,7 @@ class OverviewController extends Controller {
 		// Get Species Name--------------------------------------------------------------------------------
 			$response = $client->request("GET", "http://farmerspace.azurewebsites.net/handlerforweb.ashx",
 				['query' =>
-					['Method' => 'ProductSpecies',
+					['Method' => 'ProductOverview',
 						'ProductName' => Session::get('productName'),
 					],
 				]);
@@ -198,7 +198,7 @@ class OverviewController extends Controller {
 		
 		$client = new Client([
 			// You can set any number of default request options.
-			'timeout' => 2.0,
+			'timeout' => 10.0,
 		]);
 
 		if ($request->input('seacrh') == 'overview') {
@@ -260,24 +260,23 @@ class OverviewController extends Controller {
 						['Method' => 'Insert_SpeciesItem_Picture',
 							'ProductID' => $id,
 							'UserID' => Session::get('key'),
-							'Species' => $request->input('seacrh'),
+							'Species' => $seacrh,
 							'Image' => $value,
 							'CreateDate' => date("Y-m-d H:i:s"),
 						],
 					]);
 				$bodyImage = $response->getBody();
 			}
-		} else { $bodyImage = "Completed";}
+		} else { $bodyImage = "not added";}
 		// --------------------------------------------
 
 		// -------------- Success
-		if ($bodySpecies == "Updated" && $bodyImage == "Completed") {
-			Session::forget('productName');
-			flash('product was successfully updated', 'success');
-			return back(); //redirect('admins/product/overview/' . $id . '/edit');
+		if ($bodySpecies == "Updated") {
+			flash('Product was successfully '. $bodySpecies, 'success');
+			return redirect('admins/product/overview/' . $id . '/edit');
 		} else {
 			flash('Something worng please check it out <br>' . (string) $bodySpecies . ' ' .$seacrh.'', 'danger');
-			return back(); //redirect('admins/product/overview/' . $id . '/edit');
+			return redirect('admins/product/overview/' . $id . '/edit');
 
 		}
 	}

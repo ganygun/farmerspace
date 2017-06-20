@@ -1005,7 +1005,7 @@ ul.dropdown-menu.drp-mnu li {
 
 .inner-block {
     padding: 0.8em 2em 8em 2em;
-    background: fff;
+    background: #F0F0F2;
 }
 
 .market-update-block {
@@ -3788,26 +3788,26 @@ p.bottom {
 
 
 /*--meadia quiries start here--*/
-@media (max-width:2560px){
+
+@media (max-width:2560px) {
     .left-content {
-            width: 92%;
-        }
+        width: 92%;
+    }
 }
 
-@media (max-width:1920px){
+@media (max-width:1920px) {
     .left-content {
-            width: 88.5%;
-        }
+        width: 88.5%;
+    }
 }
 
-@media (max-width:1680px){
+@media (max-width:1680px) {
     .left-content {
-            width: 87.5%;
-        }
+        width: 87.5%;
+    }
 }
 
 @media (max-width:1440px) {
-    
     .page-container #logopic {
         opacity: 1;
         transition: all 100ms linear;

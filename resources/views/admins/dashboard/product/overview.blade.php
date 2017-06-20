@@ -149,12 +149,12 @@
                     <div class="form-group">
                         <select class="selectpicker form-control" data-live-search="true" name="search" id="search" required>
                          <option data-tokens="null" value="null" disabled selected>ระบุ Species Name</option>
-                          @if(!empty($jsonDecodeGetSpecies['dataListProductSpecies']))
-                                {{ $temp = '' }} 
-                                @foreach($jsonDecodeGetSpecies['dataListProductSpecies'] as $dataListProductSpecies)
-                                    @if($dataListProductSpecies['SpeciesName'] != $temp)
-                                      <option data-tokens="{{ $dataListProductSpecies['SpeciesName'] }}" value="{{ $dataListProductSpecies['SpeciesName'] }}">{{ $dataListProductSpecies['SpeciesName'] }}</option>
-                                    {{ $temp = $dataListProductSpecies['SpeciesName'] }} 
+                          @if(!empty($jsonDecodeGetSpecies['dataListProductOverview']))
+                                @php $temp = ''; @endphp 
+                                @foreach($jsonDecodeGetSpecies['dataListProductOverview'] as $dataListProductSpecies)
+                                    @if($dataListProductSpecies['Species'] != $temp)
+                                       <option data-tokens="{{ $dataListProductSpecies['Species'] }}" value="{{ $dataListProductSpecies['Species'] }}">{{ $dataListProductSpecies['Species'] }}</option>
+                                        @php $temp = $dataListProductSpecies['Species']; @endphp
                                     @endif
                                 @endforeach
                             @endif

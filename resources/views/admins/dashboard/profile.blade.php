@@ -4,9 +4,9 @@
     <div class="header-center">
     <!-- {{ $jsonDecode['dataListUserInfo'][0]['UserID'] }} -->
         <span style="font-weight: 300;font-size: 28px;color: #5d5d5d">
-<i aria-hidden="true" class="fa fa-cog fa-2x" style="color: #6495ed;vertical-align: middle;padding-right: 10px;">
-                            </i>  Manage Your Account
-                        </span>
+            <i aria-hidden="true" class="fa fa-cog fa-2x" style="color: #6495ed;vertical-align: middle;padding-right: 10px;">
+            </i>  Manage Your Account
+        </span>
         <div class="clearfix"> </div>
     </div>
 
