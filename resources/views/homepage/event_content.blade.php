@@ -17,8 +17,7 @@
         line-height: 1;
     }
     img{
-        display: block;
-        margin: 0 auto;
+    vertical-align: inherit;
     }
     .highlight {
         background-color: #d8d8d8;
@@ -209,11 +208,7 @@
                     <div class="post-content-container">
                         <div class="post-content entry-content cf" itemprop="articleBody">
                             <img alt="" itemprop="image" sizes="(max-width: 600px) 100vw, 600px" src="{{ $Picture }}" style="height:auto;margin-bottom: 20px;" width="100%"/>
-                            <aside class="gap cf" style="height:40px;"></aside>
-                            <h5 class="content">
-                               {{ $Abstract }}
-                            </h5>
-                            <aside class="gap cf" style="height:40px;"></aside>
+                            <aside class="gap cf" style="height:20px;"></aside>
                             <div class="content">
                              {!! $Detail !!}
                             </div>

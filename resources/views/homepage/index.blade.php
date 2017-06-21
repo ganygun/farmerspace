@@ -121,6 +121,23 @@
                         -webkit-line-clamp: 2; /* number of lines to show */
                         -webkit-box-orient: vertical;
                     }
+                    .post .post-content.event {
+                        overflow: hidden;
+                        max-height: 80px;
+                        white-space: nowrap;
+                    }
+                    .post .post-content.event img{
+                        vertical-align: inherit;
+                        display: inline-flex;
+                    }
+                    .post .post-content.event p{
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        line-height: 24px;     /* fallback */
+                        -webkit-line-clamp: 1; /* number of lines to show */
+                        -webkit-box-orient: vertical;
+                    }
             </style>
             <!-- css custom inline -->
            
@@ -449,19 +466,61 @@
                                         </div>
                                     </div>
                                     <div class="row endcolumn catelement-style1">
-                                    <!-- Big 1 Video Content -->
-                                        <div class="small-12 medium-12 large-12 columns" style="margin-bottom: 20px;">
-                                            <article itemscope="" itemtype="http://schema.org/Article" class="post style3 post-17785 type-post status-publish format-standard has-post-thumbnail hentry category-pulse tag-featured tag-hypocrite tag-thailand tag-trump" id="post-17785" role="article">
-                                                <figure class="post-gallery ">
-                                                   <img width="540" height="280" src="https://thematter.co/wp-content/uploads/2017/06/tdri-web-540x280.png" class="attachment-thevoux-style3-small size-thevoux-style3-small wp-post-image" alt="" srcset="https://thematter.co/wp-content/uploads/2017/06/tdri-web-540x280.png 540w, https://thematter.co/wp-content/uploads/2017/06/tdri-web-300x157.png 300w" sizes="(max-width: 540px) 100vw, 540px">
-                                                </figure>
-                                                <header class="post-title entry-header">
-                                                    <h3 itemprop="headline"><a href="https://thematter.co/pulse/thai-in-trump/17785" title="ในความทรัมป์ มีความไทย">ในความทรัมป์ มีความไทย</a></h3>
-                                                </header>
-                                                <div class="post-content small">
-                                                    <p>ภายใต้ภาวะอากาศแห้งแล้งเช่นนี้ได้มีชาวบ้านที่ชุมชนสันป่าสักพัฒนา จ.เชียงราย รายหนึ่งหันมาปลูกพืชที่ทนแล้งและสร้างมูลค่าเพิ่มจากผลผลิตได้เป็นอย่างดี นอกจากนี้ยังตอนกิ่งและนำเมล็ดผักหวานป่าที่ได้ออกขายสร้างรายได้เสริมได้เป็นอย่างดีด้วย</p>
-                                                </div>
-                                            </article>
+                                        <!-- Big 1 Video Content -->
+                                            <!-- jQuery library (served from Google) -->
+                                            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+                                            <!-- bxSlider Javascript file -->
+                                            <script src="{{ URL::asset('homepage/js/jquery.bxslider.min.js') }}"></script>
+                                            <!-- bxSlider CSS file -->
+                                            <link href="{{ URL::asset('homepage/css/jquery.bxslider.min.css') }}" rel="stylesheet" />
+                                            
+                                        <div class="small-12 medium-12 large-12 columns">
+                                            @if(!empty($jsonDecodeEventAll['dataListEvent']))
+                                            <ul class="bxslider">
+                                                @foreach ($jsonDecodeEventAll['dataListEvent'] as $dataListEvent)
+                                                <li>
+                                                    <article itemscope="" itemtype="http://schema.org/Article" class="post style3" id="post-17785" role="article" style="margin-bottom: -20px;">
+                                                        <figure class="post-gallery" style="height: 220px">
+                                                           <img width="540" height="280" src="{{ $dataListEvent['HeadlinePic'] }}" alt="" sizes="(max-width: 540px) 100vw, 540px">
+                                                        </figure>
+                                                        <header class="post-title entry-header" style="padding:10px;">
+                                                            <h4 itemprop="headline"><a href="{{ URL::to('/event/' . $dataListEvent['EventID']) }}" title="{{ $dataListEvent['Headline'] }}">{{ $dataListEvent['Headline'] }}</a></h4>
+                                                        </header>
+                                                        <div class="post-content event" style="padding: 0 10px;">
+                                                            {!! $dataListEvent['Content'] !!}
+                                                        </div>
+                                                    </article>
+                                                </li>
+                                                <li>
+                                                    <article itemscope="" itemtype="http://schema.org/Article" class="post style3" id="post-17785" role="article" style="margin-bottom: -20px;">
+                                                        <figure class="post-gallery" style="height: 220px">
+                                                           <img width="540" height="280" src="{{ $dataListEvent['HeadlinePic'] }}" alt="" sizes="(max-width: 540px) 100vw, 540px">
+                                                        </figure>
+                                                        <header class="post-title entry-header" style="padding:10px;">
+                                                            <h4 itemprop="headline"><a href="{{ URL::to('/event/' . $dataListEvent['EventID']) }}" title="{{ $dataListEvent['Headline'] }}">{{ $dataListEvent['Headline'] }}</a></h4>
+                                                        </header>
+                                                        <div class="post-content event" style="padding: 0 10px;">
+                                                            {!! $dataListEvent['Content'] !!}
+                                                        </div>
+                                                    </article>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                            @endif
+                                            <script>
+                                            $(document).ready(function(){
+                                                $('.bxslider').bxSlider({
+                                                    pager: false,
+                                                    auto: true,
+                                                    autoControls: false,
+                                                    controls: false,
+                                                    speed: 1000,
+                                                    adaptiveHeight: true,
+                                                    infiniteLoop: true,
+                                                });
+                                            });
+                                            </script>
+                                           
                                         </div>
                                     </div>
                                     <!-- Ads Desktop #2 -->

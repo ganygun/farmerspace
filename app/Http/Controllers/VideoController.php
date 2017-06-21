@@ -34,28 +34,37 @@ class VideoController extends Controller
 
             $bodyVideoAll = $response->getBody();
             $jsonDecodeVdoAll = json_decode($bodyVideoAll, true);
+                
             if (Session::get('cerentPage') > count($jsonDecodeVdoAll['dataListVDO'])) {
-                exit();
+                echo '<script>';
+                echo '$("#loading").show();';
+                echo '$("#notfound").html("<p>ไม่พบรายการวีดีโอ</p>");';
+                echo '$("#notfound").css("margin","40px 0");';
+                echo '$("#notfound").addClass("text-center");';
+                echo '$("#loading").hide();';
+                echo '</script>';
             }
-            else if(!empty($jsonDecodeVdoAll['dataListVDO'])) {
+            else{
+                echo '<script>';
+                echo '$("#loading").show();';
+                echo '$("#notfound").html("");';
+                echo '$("#notfound").css("margin","40px 0");';
+                echo '$("#notfound").addClass("text-center");';
+                echo '</script>';
                 // first, this page have 7 ea. and than we call more 1 ea.
-                $id =Session::get('cerentPage');
+                $id = Session::get('cerentPage');
                 // count page to call in this times
-                $countPage = $id + 1;
+                $countPage = count($jsonDecodeVdoAll['dataListVDO']);
                 // increase 1 ea. to call 7-8 = 1 ea.
-                $id += 1;
+                $id++;
                 // for call by countPage & array position -1 Ex. index[6-10] array[5-9]
                 for ($i = $id; $i <= $countPage ; $i++) {
-                    if (empty($jsonDecodeVdoAll['dataListVDO'][$i-1])) {
-                        echo '<p class="text-center" style="margin: 40px 0;">ไม่พบรายการวีดีโอ</p>';
-                        //echo '"'.Session('cerentPage').'"';
-                        break;
-                    }else{
+                   
                         $VdoUrl = $jsonDecodeVdoAll['dataListVDO'][$i-1]['VdoUrl'];
                         $Headline = $jsonDecodeVdoAll['dataListVDO'][$i-1]['Headline'];
                         $Highlight = $jsonDecodeVdoAll['dataListVDO'][$i-1]['Highlight'];
                         $ID =$jsonDecodeVdoAll['dataListVDO'][$i-1]['VdoID'];
-                    }
+                        echo '<p class="text-center" style="margin: 40px 0;">"'.$Headline.'"</p>';
                         //echo '"'.Session('cerentPage').'"';
 
                     Session::put('cerentPage', $countPage);
@@ -94,7 +103,7 @@ class VideoController extends Controller
             $bodyVdoAll = $response->getBody();
             $jsonDecodeVdoAll = json_decode($bodyVdoAll, true);
             
-            Session::put('countPage', '7'); //+ๅ
+            Session::put('cerentPage', '7'); //+ๅ
             
             if (!empty($jsonDecodeVdoAll['dataListVDO'])) {
                 return view('homepage.video')

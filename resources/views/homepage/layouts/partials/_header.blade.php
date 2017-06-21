@@ -1,5 +1,4 @@
  <!-- Start Header -->
-
             <div class="header_container style1" style="height: 100px;">
                 <header class="header style1 fixed" role="banner">
                     <div class="a header_top cf" id="toTop">

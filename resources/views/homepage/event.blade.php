@@ -14,7 +14,7 @@
 	    display: -webkit-box;
 	    line-height: 24px;
 	    /* fallback */
-	    max-height: 51px;
+	    max-height: 80px;
 	    /* fallback */
 	    -webkit-line-clamp: 2;
 	    /* number of lines to show */
@@ -109,7 +109,19 @@
 						            @endif
 					            </div>
 	                   	<div>
-	                   <!-- Load page -->
+	                   
+	                    <aside class="gap cf" style="height:40px;"></aside>
+	                    	<!-- Ads  -->
+					    <div class="small-12  medium-12 large-12" style="margin-top: 20px;">
+					            <div class="widget cf style3 widget_text" id="text-9">
+					                <div class="textwidget text-center" >
+					                    <img alt="" src="{{ URL::asset('homepage/images/ads/320x100.png') }}" style="width: 100%">
+					                    </img>
+					                </div>
+					            </div>
+					    </div>
+
+					    <!-- Load page -->
 				        <div class="small-12 medium-8 medium-offset-2 columns">
 				            <p class="text-center" id="loading">
 				                <img alt="Loading…" src="{{ URL::asset('homepage/images/loading.gif') }}" style="width: 150px;"/>
@@ -122,7 +134,7 @@
 				                win.scroll(function() {
 				                    // End of the document reached?
 				                    if ($(document).height() - win.height() == win.scrollTop()) {
-				                        $('#loading').show();
+				                        $('#loading').hide();
 				                        $.ajax({
 				                            url: '/event/page/'+i,
 				                            dataType: 'html',
@@ -136,19 +148,7 @@
 				            });
 				            </script>
 				        </div>
-                       	<!-- Ads  -->
-					    <div class="small-12  medium-12 large-12 columns" style="margin-top: 20px;">
-					            <div class="widget cf style3 widget_text" id="text-9">
-					                <div class="textwidget text-center" >
-					                    <img alt="" src="{{ URL::asset('homepage/images/ads/320x100.png') }}" style="width: 100%">
-					                    </img>
-					                </div>
-					            </div>
-					    </div>
-                    </div>
-                    <aside class="gap cf" style="height:40px;">
-                    </aside>
-                    </div>
+                     </div>
                 </div>
             </div>
     </section>
