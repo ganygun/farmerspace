@@ -140,6 +140,7 @@
             <p class="text-center" id="loading">
                 <img alt="Loading…" src="{{ URL::asset('homepage/images/loading.gif') }}" style="width: 150px;"/>
             </p>
+            <div id="notfound"></div>
             <script>
                 $(document).ready(function() {
                 var win = $(window);
@@ -148,7 +149,6 @@
                 win.scroll(function() {
                     // End of the document reached?
                     if ($(document).height() - win.height() == win.scrollTop()) {
-                        $('#loading').show();
                         $.ajax({
                             url: '/video/page/'+i,
                             dataType: 'html',
