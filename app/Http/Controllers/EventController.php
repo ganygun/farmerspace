@@ -35,7 +35,7 @@ class EventController extends Controller
             $bodyEventAll = $response->getBody();
             $jsonDecodeEventAll = json_decode($bodyEventAll, true);
             
-            Session::put('countPage', '2'); //+2 ทีละ 2
+            Session::put('cerentPage', '2'); //+2 ทีละ 2
             
             if (!empty($jsonDecodeEventAll['dataListEvent'])) {
                 return view('homepage.event')
@@ -75,9 +75,8 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-            $client = new Client([
+    public function show($id){
+        $client = new Client([
             // Base URI is used with relative requests
             // You can set any number of default request options.
             'timeout' => 10.0,

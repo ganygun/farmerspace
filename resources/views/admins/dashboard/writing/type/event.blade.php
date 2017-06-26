@@ -103,7 +103,6 @@
                           });
 
                           $('html,body').css('cursor','auto');
-                          alert('This file has been uploaded!');
                       });
               };
           };
@@ -190,7 +189,7 @@
                               </div>
                               <input type='file' id="fileUpload" name="fileUpload"  style="margin: auto;width: 100%;border:none" accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|images/*" />
                               <input type="hidden" id="PathFile" name="PathFile" />
-                      
+
                               <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
                               <script>
                               // Initialize Firebase

@@ -5566,8 +5566,7 @@ Post Syling
     /* margin: 0; */
 }
 
-.post.style4 .post-gallery img {
-}
+.post.style4 .post-gallery img {}
 
 .post.style4 .post-author {
     font-size: 10px;
@@ -17504,4 +17503,6 @@ Style Switcher
     border-color: #ef2673;
     background: #fff;
 }
+
+
 }

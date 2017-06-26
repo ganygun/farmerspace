@@ -28,6 +28,25 @@
         -webkit-line-clamp: 2; /* number of lines to show */
         -webkit-box-orient: vertical;
 	}
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: .5 s ease;
+        background-image: url({{ asset('homepage/images/youtube-view.png') }});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 80px 80px;
+    }
+    a:hover.overlay {
+            opacity: 1;
+    }
+    .video a: hover {
+        opacity: 1!important;
+    }
 
 	@media screen and (min-width: 15em) {
 	    /* Change to whatever media query you require */
@@ -112,7 +131,7 @@
                         <article class="post style1" itemtype="http://schema.org/Article" role="article">
                             <figure class="post-gallery ">
                                 <a href="{{ URL::to('/video/' .$jsonDecodeVdoAll['dataListVDO'][$key] ['VdoID']) }}">
-                                    <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][$key]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][$key]['VdoUrl'], 'embed/') + 6) }}/mqdefault.jpg" alt="" itemprop="image" style="width: 100%;height: auto;object-fit: cover;">
+                                    <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][$key]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][$key]['VdoUrl'], 'embed/') + 6) }}/mqdefault.jpg?v=1" alt="" itemprop="image" style="width: 100%;height: auto;object-fit: cover;">
                                 </a>
                             </figure>
                             <header class="post-title entry-header">
@@ -144,7 +163,7 @@
             <script>
                 $(document).ready(function() {
                 var win = $(window);
-                var i={{ session('countPage') }};
+                var i = {{ session('cerentPage') }};
                 // Each time the user scrolls
                 win.scroll(function() {
                     // End of the document reached?

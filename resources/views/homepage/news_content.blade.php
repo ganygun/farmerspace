@@ -206,7 +206,7 @@
                     </div>
                     <div class="post-content-container">
                         <div class="post-content entry-content cf" itemprop="articleBody">
-                            <img alt="" itemprop="image" sizes="(max-width: 600px) 100vw, 600px" src="{{ $Picture }}" style="height:auto;margin-bottom: 20px;" width="100%"/>
+                            <img alt="" itemprop="image" sizes="(max-width: 600px) 100vw, 600px" src="{{ $Picture }}?v=1" style="height:auto;margin-bottom: 20px;" width="100%"/>
                             <h5 class="highlight">
                                {{ $Abstract }}
                             </h5>

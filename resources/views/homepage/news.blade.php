@@ -94,7 +94,7 @@
                             <div class="small-12 medium-12 large-5 large-offset-1 columns">
                                 <figure class="post-gallery ">
                                     <a href="{{ URL::to('/news/' .$jsonDecodeNewsAll['dataListNews'][$key]['NewsID']) }}" title="{{ $jsonDecodeNewsAll['dataListNews'][$key]['Title'] }}">
-                                        <img alt="" class="attachment-thevoux-style1 size-thevoux-style1 wp-post-image" height="460" itemprop="image" sizes="(max-width: 600px) 100vw, 600px" src="{{ $jsonDecodeNewsAll['dataListNews'][$key]['Picture'] }}" srcset="" width="600"/>
+                                        <img alt="" class="attachment-thevoux-style1 size-thevoux-style1 wp-post-image" height="460" itemprop="image" sizes="(max-width: 600px) 100vw, 600px" src="{{ $jsonDecodeNewsAll['dataListNews'][$key]['Picture'] }}?v=1" srcset="" width="600"/>
                                     </a>
                                 </figure>
                             </div>

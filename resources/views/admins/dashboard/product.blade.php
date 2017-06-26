@@ -164,6 +164,7 @@
                         </div>
                         @else
                         <div class="col-md-12 text-center" style="height: 100vh">
+                            @if (!empty($search_result))
                             <h3 style="font-size:2.5em;color:rgb(80, 147, 225);margin-top: 80px">ไม่พบ "{{ $search_result }}" ในรายชื่อสินค้า</h3>
                             <div style="margin: 40px;font-size: 18px;color: #9DA5BE">
                                 ไม่พบรายชื่อสินค้านี้ในระบบ
@@ -178,6 +179,22 @@
                                     </h3>
                                 </span>
                             </a>
+                            @else
+                            <h3 style="font-size:2.5em;color:rgb(80, 147, 225);margin-top: 80px">ไม่พบสินค้านี้ในระบบ</h3>
+                            <div style="margin: 40px;font-size: 18px;color: #9DA5BE">
+                                ไม่พบสินค้านี้ในระบบ
+                                <br>
+                                กรุณาเพิ่มสินค้าที่ต้องการในระบบ
+                            </div>
+                            <a class="btn btn-lg" href="{{ url('/admins/product/create') }}" style="border-radius: 0px;background-color: #6495ed;color:#fff">
+                                <span>
+                                    <h3 style="font-size:1.5em;padding: 4px 50px;color:#fff;margin: 10px 0;">  เพิ่มชื่อสินค้า
+                                        <i aria-hidden="true" class="fa fa-plus-circle" style="margin-bottom: 0px;padding-left:10px">
+                                        </i>
+                                    </h3>
+                                </span>
+                            </a>
+                            @endif
                         </div>
                         @endif
 

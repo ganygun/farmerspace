@@ -292,7 +292,8 @@ class NewsController extends Controller {
 				            ->with('Description', $jsonDecodeShowUserProfile['dataListProfile'][0]['Description'])
 				            ->with('Company', $Company)
 				        //------------- Product Detail---------------
-				            ->with('ProductName', $ProductName);
+				            ->with('ProductName', $ProductName)
+	                        ->with('Type', 'Article');
 					}
 				}
 	        }

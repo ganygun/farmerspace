@@ -108,12 +108,8 @@
                           });
 
                       });
-
-
-               
               };
           };
-           
 
           input.click();
       }
@@ -467,7 +463,14 @@
                             @if(!empty($Picture))
                               <img id="blah" src="{{ $Picture }}" alt="your image" class="thumb-image img img-responsive center-block" style="width: 120px;margin-top: 40px;" />
                               <br>
-                              <input type="button" id="fileDelete" class="btn btn-danger center-block" value="Delete" onclick="DeleteProductPic('{{ $Picture }}')"/>
+                              <div class="form-inline">
+                                <div class="form-group">
+                                  <input type="button" id="fileDelete" class="btn btn-danger center-block" value="Delete" onclick="DeleteProductPic('{{ $Picture }}')"/>
+                                </div>
+                                <div class="form-group">
+                                  <a class="btn btn-success" href="{{ $Picture }}" download>Download</a>
+                                </div>
+                              </div>
                               <hr>
                               <div class="progress" style="height: 20px;display: none">
                                 <div id="progress" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%;">
@@ -613,7 +616,14 @@
                          @if(!empty($Picture))
                               <img id="blah" src="{{ $Picture }}" alt="your image" class="thumb-image img img-responsive center-block" style="width: 120px;margin-top: 40px;" />
                               <br>
-                              <input type="button" id="fileDelete" class="btn btn-danger center-block" value="Delete" onclick="DeleteProductPic('{{ $Picture }}')"/>
+                              <div class="form-inline">
+                                <div class="form-group">
+                                  <input type="button" id="fileDelete" class="btn btn-danger center-block" value="Delete" onclick="DeleteProductPic('{{ $Picture }}')"/>
+                                </div>
+                                <div class="form-group">
+                                  <a class="btn btn-success" href="{{ $Picture }}" download>Download</a>
+                                </div>
+                              </div>
                               <hr>
                               <div class="progress" style="height: 20px;display: none">
                                 <div id="progress" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%;">

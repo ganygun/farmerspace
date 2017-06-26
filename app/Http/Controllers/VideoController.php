@@ -34,7 +34,7 @@ class VideoController extends Controller
 
             $bodyVideoAll = $response->getBody();
             $jsonDecodeVdoAll = json_decode($bodyVideoAll, true);
-                
+
             if (Session::get('cerentPage') > count($jsonDecodeVdoAll['dataListVDO'])) {
                 echo '<script>';
                 echo '$("#loading").show();';
@@ -59,7 +59,6 @@ class VideoController extends Controller
                 $id++;
                 // for call by countPage & array position -1 Ex. index[6-10] array[5-9]
                 for ($i = $id; $i <= $countPage ; $i++) {
-                   
                         $VdoUrl = $jsonDecodeVdoAll['dataListVDO'][$i-1]['VdoUrl'];
                         $Headline = $jsonDecodeVdoAll['dataListVDO'][$i-1]['Headline'];
                         $Highlight = $jsonDecodeVdoAll['dataListVDO'][$i-1]['Highlight'];
@@ -201,6 +200,7 @@ class VideoController extends Controller
                             ->with('Title', $jsonDecodeVideoContent['dataListVDO'][$key]['Headline'])
                             ->with('Abstract', $jsonDecodeVideoContent['dataListVDO'][$key]['Highlight'])
                             ->with('VdoUrl', $jsonDecodeVideoContent['dataListVDO'][$key]['VdoUrl'])
+                            ->with('Picture', 'https://i.ytimg.com/vi/'.substr($jsonDecodeVideoContent['dataListVDO'][$key]['VdoUrl'], strpos($jsonDecodeVideoContent['dataListVDO'][$key]['VdoUrl'], 'embed/') + 6) .'/hqdefault.jpg')
                             ->with('CreatedDate', $jsonDecodeVideoContent['dataListVDO'][$key]['CreatedDate'])
                             ->with('Tag', $jsonDecodeVideoContent['dataListVDO'][$key]['Tag'])
                             ->with('Type', 'Video')
@@ -208,7 +208,8 @@ class VideoController extends Controller
                             ->with('PictureProfile', $jsonDecodeShowUserProfile['dataListProfile'][0]['PictureProfile'])
                             ->with('PenName', $jsonDecodeShowUserProfile['dataListProfile'][0]['PenName'])
                             ->with('Description', $jsonDecodeShowUserProfile['dataListProfile'][0]['Description'])
-                            ->with('Company', $Company);
+                            ->with('Company', $Company)
+                            ->with('Type', 'Video');
                     }
                 }
             }
@@ -229,13 +230,13 @@ class VideoController extends Controller
                 foreach ($jsonDecodeVideoContent['dataListVDOUnapprove'] as $key => $value) {
                     if ($jsonDecodeVideoContent['dataListVDOUnapprove'][$key]['VdoID'] == $id) {
 
-                    
-                        //------------- news Content---------------
+                        //------------- Video Content---------------
                             return view('homepage.video_content')
                             ->with('ID', $jsonDecodeVideoContent['dataListVDOUnapprove'][$key]['VdoID'])
                             ->with('Title', $jsonDecodeVideoContent['dataListVDOUnapprove'][$key]['Headline'])
                             ->with('Abstract', $jsonDecodeVideoContent['dataListVDOUnapprove'][$key]['Highlight'])
                             ->with('VdoUrl', $jsonDecodeVideoContent['dataListVDOUnapprove'][$key]['VdoUrl'])
+                            ->with('Picture', 'https://i.ytimg.com/vi/'.substr($jsonDecodeVideoContent['dataListVDOUnapprove'][$key]['VdoUrl'], strpos($jsonDecodeVideoContent['dataListVDOUnapprove'][$key]['VdoUrl'], 'embed/') + 6) .'/hqdefault.jpg')
                             ->with('CreatedDate', $jsonDecodeVideoContent['dataListVDOUnapprove'][$key]['CreatedDate'])
                             ->with('Tag', $jsonDecodeVideoContent['dataListVDOUnapprove'][$key]['Tag'])
                             ->with('Type', 'Video')

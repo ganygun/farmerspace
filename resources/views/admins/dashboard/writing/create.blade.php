@@ -103,17 +103,11 @@
                           });
 
                           $('html,body').css('cursor','auto');
-                          alert('This file has been uploaded!');
-
-
 
                       });
 
-
-               
               };
           };
-           
 
           input.click();
       }

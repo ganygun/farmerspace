@@ -306,7 +306,7 @@
                 <div class=" medium-4 columns hidden-xs text-center" style="margin-top: 20px;">
                     <!-- Main ProductPicture -->
                     <div id="image-gallery-1" class="cf clearfix" style="height: 200px;">
-                        <img id="imagePreview" class="center-block" src="{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['ProductPicture'] }}" data-high-res-src="{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['ProductPicture'] }}" alt="" class="gallery-items img img-responsive image center-block" style="margin-bottom: 20px;height: auto;width: 200px;">
+                        <img id="imagePreview" class="center-block gallery-items" src="{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['ProductPicture'] }}" data-high-res-src="{{ $jsonDecodeProductDetails['dataListProductDetails'][0]['ProductPicture'] }}" alt="" class="gallery-items img img-responsive image center-block" style="margin-bottom: 20px;height: auto;width: 200px;">
                     </div>
                     <!-- Sub OerviewPicture -->
                     <div class="img_sub_hover">

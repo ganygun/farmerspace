@@ -13,6 +13,14 @@
             document.getElementById("fileDelete").style.display = 'none';
             document.getElementById("fileUpload").value = '';
         }
+        if(event.target.files[0].size > 5242880){
+            // Check file size
+            alert("Sorry, your file is too large. File size must be excately 5 MB");
+            $('#blah').attr('src', '/admin/images/icon_picture.png');
+            document.getElementById("PathFile").value = '';
+            document.getElementById("fileDelete").style.display = 'none';
+            document.getElementById("fileUpload").value = '';
+        }
         else{
             selectedFile = event.target.files[0];
             if (tempFile == selectedFile.name) {}

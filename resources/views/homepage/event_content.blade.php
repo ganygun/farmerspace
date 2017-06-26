@@ -153,7 +153,7 @@
         </div>
         <div class="row post-detail-style2" style="margin-top: 40px;">
             <div class="small-12 medium-12 large-8 large-offset-2 columns">
-                <article class="post post-detail post-18785 type-post status-publish format-standard has-post-thumbnail hentry category-byte tag-demography tag-family tag-featured tag-pregnant" data-id="18785" data-url="https://thematter.co/byte/we-arent-ready-to-be-pregnant/18785" id="post-18785" itemscope="" itemtype="http://schema.org/Article" role="article" style="position: relative;">
+                <article class="post post-detail post-18785 type-post" id="post-18785" itemscope="" itemtype="http://schema.org/Article" role="article" style="position: relative;">
                     <header class="post-title entry-header">
                         <h1 class="entry-title header-content" itemprop="headline" style="font-weight: 600;">
                             {{ $Title }}
@@ -207,7 +207,7 @@
                     </div>
                     <div class="post-content-container">
                         <div class="post-content entry-content cf" itemprop="articleBody">
-                            <img alt="" itemprop="image" sizes="(max-width: 600px) 100vw, 600px" src="{{ $Picture }}" style="height:auto;margin-bottom: 20px;" width="100%"/>
+                            <img alt="" itemprop="image" sizes="(max-width: 600px) 100vw, 600px" src="{{ $Picture }}?v=1" style="height:auto;margin-bottom: 20px;" width="100%"/>
                             <aside class="gap cf" style="height:20px;"></aside>
                             <div class="content">
                              {!! $Detail !!}
@@ -236,7 +236,7 @@
                                     <div class="" style="border: 1px dashed #cccccc;border-radius: 0px;margin:3px;">
                                         <div class="row" style="padding:15px;">
                                             <div class="small-12 medium-3 center-block" style="margin-right: 30px!important">
-                                                <img class="img img-responsive img-circle" src="{{ $PictureProfile }}" style="object-fit: contain;object-position: center;height: 180px;margin:auto;">
+                                                <img class="img img-responsive img-circle" src="{{ $PictureProfile }}" style="margin:auto;">
                                                 </img>
                                             </div>
                                             <div class="small-12 medium-7 " style="display: block;margin-right: auto;margin-top: 20px;">

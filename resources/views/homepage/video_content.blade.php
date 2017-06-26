@@ -240,7 +240,7 @@
                                     <div class="" style="border: 1px dashed #cccccc;border-radius: 0px;margin:3px;">
                                         <div class="row" style="padding:15px;">
                                             <div class="small-12 medium-3 center-block" style="margin-right: 30px!important">
-                                                <img class="img img-responsive img-circle" src="{{ $PictureProfile }}" style="object-fit: contain;object-position: center;height: 180px;margin:auto;">
+                                                <img class="img img-responsive img-circle" src="{{ $PictureProfile }}" style="margin:auto;">
                                                 </img>
                                             </div>
                                             <div class="small-12 medium-7 " style="display: block;margin-right: auto;margin-top: 20px;">

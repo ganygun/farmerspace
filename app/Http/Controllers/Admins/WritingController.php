@@ -136,7 +136,7 @@ class WritingController extends Controller {
 		}
 
 		try {
-			//Get View Tyle Event
+			//Get View Type Event
 			if ($getView == 'e') {
 				$url = 'https://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Edit_Event';
 
@@ -158,7 +158,7 @@ class WritingController extends Controller {
 				if ($result === FALSE) { /* Handle error */}
 				$InsertType = 'Event';
 			}
-			//Get View Tyle Video
+			//Get View Type Video
 			elseif ($getView == 'v') {
 
 				$url = 'https://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Edit_Vdo';
@@ -182,7 +182,7 @@ class WritingController extends Controller {
 				$InsertType = 'Video';
 
 			}
-			//Get View Tyle All
+			//Get View Type All
 			elseif ($getView == 'a') {
 				$url = 'https://farmerspace.azurewebsites.net/HandlerForWeb.ashx/?Method=Edit_News';
 
@@ -227,7 +227,6 @@ class WritingController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show($id) {
-		
 
 	}
 
@@ -560,14 +559,6 @@ class WritingController extends Controller {
 			}
 		}
 
-	
-
-		
-			
-
-		
-
-		
 
 	}
 

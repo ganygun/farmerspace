@@ -28,6 +28,9 @@
                         width: 75px!important;
                         height: 75px;
                     }
+                     .event-box{
+                        height: 150px;
+                    }
                 }
                 @media screen and (min-width: 30em){
                     .photo-gallery{
@@ -45,7 +48,9 @@
                         width: 100px!important;
                         height: 100px;
                     }
-
+                    .event-box{
+                        height: 220px;
+                    }
                 }
                 @media screen and (min-width: 48em){
                     .photo-gallery{
@@ -79,10 +84,16 @@
                     .page_content{
                         padding: 0 3em;
                     }
+                    .event-box{
+                        height: 140px;
+                    }
                 }
                 @media screen and (min-width: 64em){
                     .photo-gallery{
                         height: 166px;
+                    }
+                    .event-box{
+                        height: 200px;
                     }
                 }
                 @media screen and (min-width: 75em){
@@ -138,9 +149,27 @@
                         -webkit-line-clamp: 1; /* number of lines to show */
                         -webkit-box-orient: vertical;
                     }
+                    .overlay {
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        opacity: 0;
+                        transition: .5s ease;
+                        background-image: url({{ asset('homepage/images/youtube-view.png') }});
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: 80px 80px;
+                        }
+                    a:hover .overlay {
+                         opacity: 1;
+                     }
+                    .video a:hover{
+                        opacity: 1!important;
+                     }
             </style>
             <!-- css custom inline -->
-           
             <div role="main" class="cf">
                 <section class="">
                     <article class="post post-1841 page type-page status-publish hentry" id="post-1841">
@@ -172,7 +201,7 @@
                                         <div class="small-12 medium-8 large-8 columns">
                                             <article itemscope="" itemtype="http://schema.org/Article" class="post style3 post-17785 type-post status-publish format-standard has-post-thumbnail hentry category-pulse tag-featured tag-hypocrite tag-thailand tag-trump" id="post-17785" role="article">
                                                 <figure class="post-gallery ">
-                                                    <img width="570" height="450" src="{{ $jsonDecodeNewsAll['dataListNews'][0]['Picture'] }}" sizes="(max-width: 570px) 100vw, 570px">
+                                                    <img width="570" height="450" src="{{ $jsonDecodeNewsAll['dataListNews'][0]['Picture'] }}?v=1" sizes="(max-width: 570px) 100vw, 570px">
                                                 </figure>
                                                 <aside class="post-author cf">
                                                     <time class="time" datetime="{{ $jsonDecodeNewsAll['dataListNews'][0]['CreatedDate'] }}"  >{{ Carbon\Carbon::parse($jsonDecodeNewsAll['dataListNews'][0]['CreatedDate'])->format('d  M  Y') }}</time>
@@ -193,7 +222,7 @@
                                                 <div class="small-6 medium-12 large-12 columns second-news">
                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style3-small post-17793 type-post status-publish format-standard has-post-thumbnail hentry category-pulse tag-broke-up tag-featured tag-love tag-relationship tag-workplace-romance" id="post-17793" role="article">
                                                         <figure class="post-gallery photo-gallery">
-                                                            <img width="540" height="280" src="{{ $jsonDecodeNewsAll['dataListNews'][1]['Picture'] }}" class="attachment-thevoux-style3-small size-thevoux-style3-small wp-post-image" alt="" itemprop="image" sizes="(max-width: 540px) 100vw, 540px">
+                                                            <img width="540" height="280" src="{{ $jsonDecodeNewsAll['dataListNews'][1]['Picture'] }}?v=1" class="attachment-thevoux-style3-small size-thevoux-style3-small wp-post-image" alt="" itemprop="image" sizes="(max-width: 540px) 100vw, 540px">
                                                         </figure>
                                                         <aside class="post-author small cf">
                                                              <time class="time" datetime="{{ $jsonDecodeNewsAll['dataListNews'][1]['CreatedDate'] }}"  >{{ Carbon\Carbon::parse($jsonDecodeNewsAll['dataListNews'][1]['CreatedDate'])->format('d  M  Y') }}</time>
@@ -209,7 +238,7 @@
                                                 <div class="small-6 medium-12 large-12 columns third-news">
                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style3-small post-17793 type-post status-publish format-standard has-post-thumbnail hentry category-pulse tag-broke-up tag-featured tag-love tag-relationship tag-workplace-romance" id="post-17793" role="article">
                                                         <figure class="post-gallery photo-gallery">
-                                                            <img width="540" height="280" src="{{ $jsonDecodeNewsAll['dataListNews'][2]['Picture'] }}" class="attachment-thevoux-style3-small size-thevoux-style3-small wp-post-image" alt="" itemprop="image" sizes="(max-width: 540px) 100vw, 540px">
+                                                            <img width="540" height="280" src="{{ $jsonDecodeNewsAll['dataListNews'][2]['Picture'] }}?v=1" class="attachment-thevoux-style3-small size-thevoux-style3-small wp-post-image" alt="" itemprop="image" sizes="(max-width: 540px) 100vw, 540px">
                                                         </figure>
                                                         <aside class="post-author small cf">
                                                              <time class="time" datetime="{{ $jsonDecodeNewsAll['dataListNews'][2]['CreatedDate'] }}"  >{{ Carbon\Carbon::parse($jsonDecodeNewsAll['dataListNews'][2]['CreatedDate'])->format('d  M  Y') }}</time>
@@ -261,7 +290,7 @@
                                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style4 cf" id="post-17331" role="article">
                                                                         <figure class="post-gallery">
                                                                             <a href="{{ URL::to('/news/' .$jsonDecodeNewsAll['dataListNews'][$key]['NewsID']) }}" title="{{ $jsonDecodeNewsAll['dataListNews'][$key]['Title'] }}">
-                                                                                <img class="resizeimg" width="125" height="125" src="{{ $jsonDecodeNewsAll['dataListNews'][$key]['Picture'] }}" sizes="(max-width: 125px) 100vw, 125px">
+                                                                                <img class="resizeimg" width="125" height="125" src="{{ $jsonDecodeNewsAll['dataListNews'][$key]['Picture'] }}?v=1" sizes="(max-width: 125px) 100vw, 125px">
                                                                             </a>
                                                                         </figure>
                                                                         <div class="style4-container">
@@ -281,7 +310,7 @@
                                                                 <article itemscope="" itemtype="http://schema.org/Article" class="post style4 cf" id="post-17331" role="article">
                                                                     <figure class="post-gallery">
                                                                         <a href="{{ URL::to('/news/' .$jsonDecodeNewsAll['dataListNews'][$key]['NewsID']) }}" title="{{ $jsonDecodeNewsAll['dataListNews'][$key]['Title'] }}">
-                                                                            <img class="resizeimg" width="125" height="125" src="{{ $jsonDecodeNewsAll['dataListNews'][$key]['Picture'] }}" sizes="(max-width: 125px) 100vw, 125px">
+                                                                            <img class="resizeimg" width="125" height="125" src="{{ $jsonDecodeNewsAll['dataListNews'][$key]['Picture'] }}?v=1" sizes="(max-width: 125px) 100vw, 125px">
                                                                         </a>
                                                                     </figure>
                                                                     <div class="style4-container">
@@ -355,7 +384,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
                         <!-- Start Third Content -->
                             <div class="row vc_row-fluid page_content">
                             <!-- Video Content -->
@@ -390,9 +418,11 @@
                                                 @if(!empty($jsonDecodeVdoAll['dataListVDO'][1]))
                                                 <div class="small-12 medium-6 large-6 columns second-news">
                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style3-small" id="post-17793" role="article">
-                                                        <figure class="post-gallery ">
+                                                        <figure class="post-gallery video">
                                                             <a href="{{ URL::to('/video/' .$jsonDecodeVdoAll['dataListVDO'][1]['VdoID']) }}">
                                                                 <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][1]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][1]['VdoUrl'], 'embed/') + 6) }}/mqdefault.jpg" alt="" itemprop="image">
+                                                                <div class="overlay">
+                                                                </div>
                                                             </a>
                                                         </figure>
                                                         <header class="post-title entry-header">
@@ -404,9 +434,11 @@
                                                 @if(!empty($jsonDecodeVdoAll['dataListVDO'][2]))
                                                 <div class="small-12 medium-6 large-6 columns second-news">
                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style3-small" id="post-17793" role="article">
-                                                        <figure class="post-gallery ">
+                                                        <figure class="post-gallery video">
                                                             <a href="{{ URL::to('/video/' .$jsonDecodeVdoAll['dataListVDO'][2] ['VdoID']) }}">
                                                                 <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][2]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][2]['VdoUrl'], 'embed/') + 6) }}/mqdefault.jpg" alt="" itemprop="image">
+                                                                <div class="overlay">
+                                                                </div>
                                                             </a>
                                                         </figure>
 
@@ -423,9 +455,11 @@
                                                 @if(!empty($jsonDecodeVdoAll['dataListVDO'][3]))
                                                 <div class="small-12 medium-6 large-6 columns second-news">
                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style3-small" id="post-17793" role="article">
-                                                        <figure class="post-gallery ">
+                                                        <figure class="post-gallery video">
                                                             <a href="{{ URL::to('/video/' .$jsonDecodeVdoAll['dataListVDO'][3] ['VdoID']) }}">
                                                                 <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][3]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][3]['VdoUrl'], 'embed/') + 6) }}/mqdefault.jpg" alt="" itemprop="image">
+                                                                <div class="overlay">
+                                                                </div>
                                                             </a>
                                                         </figure>
                                                         <header class="post-title entry-header">
@@ -437,9 +471,11 @@
                                                 @if(!empty($jsonDecodeVdoAll['dataListVDO'][4]))
                                                 <div class="small-12 medium-6 large-6 columns second-news">
                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style3-small" id="post-17793" role="article">
-                                                        <figure class="post-gallery ">
+                                                        <figure class="post-gallery video">
                                                             <a href="{{ URL::to('/video/' .$jsonDecodeVdoAll['dataListVDO'][4] ['VdoID']) }}">
                                                                 <img width="540" height="280" src="https://i.ytimg.com/vi/{{ substr($jsonDecodeVdoAll['dataListVDO'][4]['VdoUrl'], strpos($jsonDecodeVdoAll['dataListVDO'][4]['VdoUrl'], 'embed/') + 6) }}/mqdefault.jpg" alt="" itemprop="image">
+                                                                <div class="overlay">
+                                                                </div>
                                                             </a>
                                                         </figure>
 
@@ -466,21 +502,14 @@
                                         </div>
                                     </div>
                                     <div class="row endcolumn catelement-style1">
-                                        <!-- Big 1 Video Content -->
-                                            <!-- jQuery library (served from Google) -->
-                                            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-                                            <!-- bxSlider Javascript file -->
-                                            <script src="{{ URL::asset('homepage/js/jquery.bxslider.min.js') }}"></script>
-                                            <!-- bxSlider CSS file -->
-                                            <link href="{{ URL::asset('homepage/css/jquery.bxslider.min.css') }}" rel="stylesheet" />
-                                            
+                                        <!-- Big 1 Event Content -->
                                         <div class="small-12 medium-12 large-12 columns">
                                             @if(!empty($jsonDecodeEventAll['dataListEvent']))
                                             <ul class="bxslider">
                                                 @foreach ($jsonDecodeEventAll['dataListEvent'] as $dataListEvent)
                                                 <li>
                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style3" id="post-17785" role="article" style="margin-bottom: -20px;">
-                                                        <figure class="post-gallery" style="height: 220px">
+                                                        <figure class="post-gallery event-box">
                                                            <img width="540" height="280" src="{{ $dataListEvent['HeadlinePic'] }}" alt="" sizes="(max-width: 540px) 100vw, 540px">
                                                         </figure>
                                                         <header class="post-title entry-header" style="padding:10px;">
@@ -491,10 +520,10 @@
                                                         </div>
                                                     </article>
                                                 </li>
-                                                <li>
+                                                     <li>
                                                     <article itemscope="" itemtype="http://schema.org/Article" class="post style3" id="post-17785" role="article" style="margin-bottom: -20px;">
-                                                        <figure class="post-gallery" style="height: 220px">
-                                                           <img width="540" height="280" src="{{ $dataListEvent['HeadlinePic'] }}" alt="" sizes="(max-width: 540px) 100vw, 540px">
+                                                        <figure class="post-gallery event-box">
+                                                           <img width="540" height="280" src="https://firebasestorage.googleapis.com/v0/b/farmerspace-31fea.appspot.com/o/FarmerspacePicture%2FimgNews%2FType%2FEvent%2F2017%2F5%2FEventbanner_smartfarmer_60x0.jpg?alt=media&token=73516ae2-4528-40dd-85cc-e8676aa5cb7e?v=1" alt="" sizes="(max-width: 540px) 100vw, 540px">
                                                         </figure>
                                                         <header class="post-title entry-header" style="padding:10px;">
                                                             <h4 itemprop="headline"><a href="{{ URL::to('/event/' . $dataListEvent['EventID']) }}" title="{{ $dataListEvent['Headline'] }}">{{ $dataListEvent['Headline'] }}</a></h4>
@@ -512,15 +541,13 @@
                                                 $('.bxslider').bxSlider({
                                                     pager: false,
                                                     auto: true,
-                                                    autoControls: false,
                                                     controls: false,
                                                     speed: 1000,
-                                                    adaptiveHeight: true,
                                                     infiniteLoop: true,
+                                                    slideMargin: 10,
                                                 });
                                             });
                                             </script>
-                                           
                                         </div>
                                     </div>
                                     <!-- Ads Desktop #2 -->
